@@ -20,8 +20,7 @@
         android:layout_marginLeft="@dimen/udesk_20"
         android:layout_marginRight="@dimen/udesk_20"
         android:background="@drawable/udesk_edit_bg"
-        android:textColor="@color/udesk_custom_dialog_des_color"
-        android:textColorHint="@color/udesk_custom_dialog_des_color"
+        android:textColor="#666666"
         android:textSize="@dimen/udesk_sp15"
         android:visibility="gone" />
 
@@ -32,7 +31,7 @@
         android:layout_marginLeft="@dimen/udesk_20"
         android:layout_marginRight="@dimen/udesk_20"
         android:gravity="left"
-        android:textColor="@color/udesk_custom_dialog_des_color"
+        android:textColor="#666666"
         android:textSize="@dimen/udesk_sp15"
         android:visibility="gone" />
 

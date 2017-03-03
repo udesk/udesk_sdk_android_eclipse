@@ -21,13 +21,16 @@ import udesk.core.UdeskCoreConst;
 import udesk.core.model.MessageInfo;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-
-import com.tencent.bugly.crashreport.CrashReport;
+import cn.udesk.activity.UdeskZoomImageActivty;
+import cn.udesk.config.UdeskBaseInfo;
 
 public class UdeskUtil {
 	public static final String  ImgFolderName = "UDeskIMg";
@@ -36,15 +39,18 @@ public class UdeskUtil {
 
 	public static Uri getOutputMediaFileUri(Context context) {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-		if(getOutputMediaFile(context,"IMG_" + timeStamp + ".jpg") != null){
-			return Uri.fromFile(getOutputMediaFile(context,"IMG_" + timeStamp + ".jpg"));
-		}else{
-			return null;
+		 try {
+			if(getOutputMediaFile(context,"IMG_" + timeStamp + ".jpg") != null){
+			     return Uri.fromFile(getOutputMediaFile(context,"IMG_" + timeStamp + ".jpg"));
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		 return null;
 
 	}
 
-
+	
 
 	/**
 	 * 提供的Uri 解析出文件绝对路径
@@ -52,36 +58,39 @@ public class UdeskUtil {
 	 * @return
 	 */
 	public static String parseOwnUri(Uri uri,Context context){
-		if(uri==null)return "";
-	
+		if(uri==null){
+			return "";
+		}
 		return uri.getPath();
 	}
 
 	public static File getOutputMediaFile(Context context,String mediaName) {
-		File mediaStorageDir = null;
+		File mediaFile = null;
 		try {
-//            mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), ImgFolderName);
-			mediaStorageDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), ImgFolderName);
+			File mediaStorageDir = null;
+			try {
+                mediaStorageDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), ImgFolderName);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+
+			if (!mediaStorageDir.exists()) {
+                if (!mediaStorageDir.mkdirs()) {
+                    return null;
+                }
+            }
+
+			mediaFile = new File(mediaStorageDir.getPath() + File.separator + mediaName);
 		} catch (Exception e) {
-			e.printStackTrace();
+			return  null;
 		}
-
-		if (!mediaStorageDir.exists()) {
-			if (!mediaStorageDir.mkdirs()) {
-				return null;
-			}
-		}
-
-		File mediaFile = new File(mediaStorageDir.getPath() + File.separator + mediaName);
 		return mediaFile;
 	}
 
 	public static boolean isExitFile(String path) {
 		File file = new File(path);
-		if (file.exists()) {
-			return true;
-		}
-		return false;
+		return file.exists();
 	}
 
 
@@ -98,11 +107,7 @@ public class UdeskUtil {
 		}
 		String filepath = mediaStorageDir.getPath() + File.separator + fileName;
 		File file = new File(filepath);
-		if (!file.exists()) {
-			return false;
-		} else {
-			return true;
-		}
+		return file.exists();
 	}
 
 
@@ -170,17 +175,6 @@ public class UdeskUtil {
 	}
 
 
-	public static String getSaveImgPath(Context context ,String url) {
-//		String fileName = url.substring(url.lastIndexOf("/") + 1);
-		File mediaStorageDir = new File(
-				context.getExternalFilesDir(Environment.DIRECTORY_RINGTONES),
-				SaveImg);
-
-		return mediaStorageDir.getPath() ;
-//				+ File.separator + fileName;
-	}
-
-
 	public static String buildImageLoaderImgUrl(MessageInfo message){
 
 		if(!TextUtils.isEmpty(message.getLocalPath()) && isExitFile(message.getLocalPath())){
@@ -190,17 +184,15 @@ public class UdeskUtil {
 		}
 	}
 
-
-
 	public static String getFormUrlPara(Context context){
 		StringBuilder builder = new StringBuilder();
 		builder.append("?sdk_token=").append(UdeskSDKManager.getInstance().getSdkToken(context))
-				.append("&sdk_version=").append(UdeskCoreConst.sdkversion);
+				.append("&sdk_version=").append(UdeskCoreConst.sdkversion).append("&app_id=").append(UdeskBaseInfo.App_Id);
 		if (!isZh(context)){
 			builder.append("&language=en-us");
 		}
-		Map<String, String> userinfo = UdeskSDKManager.getInstance().getUserinfo();
-		Map<String,String> textField = UdeskSDKManager.getInstance().getTextField();
+		Map<String, String> userinfo = UdeskBaseInfo.userinfo;
+		Map<String,String> textField =UdeskBaseInfo.textField;
 		if(userinfo != null && !userinfo.isEmpty()){
 			Set<String> keySet = userinfo.keySet();
 			for (String key : keySet) {
@@ -253,21 +245,6 @@ public class UdeskUtil {
 				.build();// 开始构建
 		ImageLoader.getInstance().init(config);
 		return config;
-	}
-
-	public static  void initCrashReport(Context context){
-		CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
-		strategy.setAppVersion(UdeskCoreConst.sdkversion);
-		CrashReport.initCrashReport(context, UdeskCoreConst.buglyAppid, false, strategy);
-	}
-
-	public static void closeCrashReport(){
-		try{
-			CrashReport.closeCrashReport();
-		}catch (Exception e){
-
-		}
-
 	}
 
 	public static int getDisplayWidthPixels(Activity activity) {
@@ -337,32 +314,42 @@ public class UdeskUtil {
 	public static boolean isZh(Context context) {
 		Locale locale = context.getResources().getConfiguration().locale;
 		String language = locale.getLanguage();
-		if (language.endsWith("zh"))
-			return true;
-		else
-			return false;
+		return language.endsWith("zh");
 	}
 
 
-	public static String getDeviceId(Context context) {
-		String deviceId = "";
-		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+	//预览大图
+	public static void previewPhoto(Context context ,String sourceImagePath) {
 		try {
-			deviceId = telephonyManager.getDeviceId();
+			if (TextUtils.isEmpty(sourceImagePath)){
+				return;
+			}
+			File sourceFile = new File(sourceImagePath);
+			if (sourceFile.exists()) {
+				Intent intent = new Intent(context,
+						UdeskZoomImageActivty.class);
+				Bundle data = new Bundle();
+				data.putParcelable("image_path", Uri.fromFile(sourceFile));
+				intent.putExtras(data);
+				context.startActivity(intent);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if(!TextUtils.isEmpty(deviceId)){
-			return  deviceId;
-		}
-		deviceId = telephonyManager.getSimSerialNumber();
-		if(!TextUtils.isEmpty(deviceId)){
-			return  deviceId;
-		}
-		deviceId = android.os.Build.SERIAL;
-		if(!TextUtils.isEmpty(deviceId)){
-			return  deviceId;
-		}
-		return deviceId;
+
 	}
+
+	public static  String getAppName(Context context){
+		String appName = "";
+		try {
+			PackageManager manager = context.getPackageManager();
+			PackageInfo info = null;
+			info = manager.getPackageInfo(context.getPackageName(), 0);
+			appName = info.applicationInfo.loadLabel(manager).toString();
+		} catch (PackageManager.NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		return appName;
+	}
+
 }

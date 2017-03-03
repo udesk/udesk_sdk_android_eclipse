@@ -1,6 +1,7 @@
 package cn.udesk.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -60,24 +61,28 @@ public class UDPullGetMoreListView extends ListView implements OnScrollListener 
     }
 
     private void init(Context context) {
-        inflater = LayoutInflater.from(context);
-        llheader = (LinearLayout) inflater.inflate(R.layout.udesk_layout_get_more, null);
-        pbLoading = (ProgressBar) llheader.findViewById(R.id.udesk_get_more_progress);
-        tvTips = (TextView) llheader.findViewById(R.id.udesk_get_more_tips);
+        try {
+            inflater = LayoutInflater.from(context);
+            llheader = (LinearLayout) inflater.inflate(R.layout.udesk_layout_get_more, null);
+            pbLoading = (ProgressBar) llheader.findViewById(R.id.udesk_get_more_progress);
+            tvTips = (TextView) llheader.findViewById(R.id.udesk_get_more_tips);
 
-        measureView(llheader);
-        headContentHeight = llheader.getMeasuredHeight();
+            measureView(llheader);
+            headContentHeight = llheader.getMeasuredHeight();
 
-        llheader.setPadding(0, -1 * headContentHeight, 0, 0);
-        llheader.invalidate();
+            llheader.setPadding(0, -1 * headContentHeight, 0, 0);
+            llheader.invalidate();
 
-        addHeaderView(llheader, null, false);
+            addHeaderView(llheader, null, false);
 
-        setOnScrollListener(this);
+            setOnScrollListener(this);
 
-        state = DONE;
-        isRefreshable = false;
-        isPush = true;
+            state = DONE;
+            isRefreshable = false;
+            isPush = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -96,114 +101,118 @@ public class UDPullGetMoreListView extends ListView implements OnScrollListener 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        if (isRefreshable) {
-            switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                if (firstItemIndex == 0 && !isRecored) {
-                    isRecored = true;
-                    isPush = true;
-                    startY = (int) event.getY();
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-                if (state != REFRESHING && state != LOADING) {
-                    if (state == DONE) {
-                        // 什么都不做
+        try {
+            if (isRefreshable) {
+                switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    if (firstItemIndex == 0 && !isRecored) {
+                        isRecored = true;
+                        isPush = true;
+                        startY = (int) event.getY();
                     }
-                    if (state == PULL_To_REFRESH) {
-                        state = DONE;
-                        changeHeaderViewByState();
-
-                    }
-                    if (state == RELEASE_To_REFRESH) {
-                        state = REFRESHING;
-                        changeHeaderViewByState();
-                        onRefresh();
-
-                    }
-                }
-
-                isRecored = false;
-                isBack = false;
-
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                int tempY = (int) event.getY();
-
-                if (!isRecored && firstItemIndex == 0) {
-                    isRecored = true;
-                    startY = tempY;
-                }
-
-                if (state != REFRESHING && isRecored && state != LOADING) {
-
-                    // 保证在设置padding的过程中，当前的位置一直是在head，否则如果当列表超出屏幕的话，当在上推的时候，列表会同时进行滚动
-
-                    // 可以松手去刷新了
-                    if (state == RELEASE_To_REFRESH) {
-
-                        setSelection(0);
-
-                        // 往上推了，推到了屏幕足够掩盖head的程度，但是还没有推到全部掩盖的地步
-                        if (((tempY - startY) / RATIO < headContentHeight) && (tempY - startY) > 0) {
-                            state = PULL_To_REFRESH;
-                            changeHeaderViewByState();
-
+                    break;
+                case MotionEvent.ACTION_UP:
+                    if (state != REFRESHING && state != LOADING) {
+                        if (state == DONE) {
+                            // 什么都不做
                         }
-                        // 一下子推到顶了
-                        else if (tempY - startY <= 0) {
+                        if (state == PULL_To_REFRESH) {
                             state = DONE;
                             changeHeaderViewByState();
 
                         }
-                        // 往下拉了，或者还没有上推到屏幕顶部掩盖head的地步
-                        else {
-                            // 不用进行特别的操作，只用更新paddingTop的值就行了
-                        }
-                    }
-                    // 还没有到达显示松开刷新的时候,DONE或者是PULL_To_REFRESH状态
-                    if (state == PULL_To_REFRESH) {
-
-                        setSelection(0);
-
-                        // 下拉到可以进入RELEASE_TO_REFRESH的状态
-                        if ((tempY - startY) / RATIO >= headContentHeight) {
-                            state = RELEASE_To_REFRESH;
-                            isBack = true;
+                        if (state == RELEASE_To_REFRESH) {
+                            state = REFRESHING;
                             changeHeaderViewByState();
-                        }
-                        // 上推到顶了
-                        else if (tempY - startY <= 0) {
-                            state = DONE;
-                            changeHeaderViewByState();
-                            isPush = false;
+                            onRefresh();
+
                         }
                     }
 
-                    // done状态下
-                    if (state == DONE) {
-                        if (tempY - startY > 0) {
-                            state = PULL_To_REFRESH;
-                            changeHeaderViewByState();
+                    isRecored = false;
+                    isBack = false;
+
+                    break;
+
+                case MotionEvent.ACTION_MOVE:
+                    int tempY = (int) event.getY();
+
+                    if (!isRecored && firstItemIndex == 0) {
+                        isRecored = true;
+                        startY = tempY;
+                    }
+
+                    if (state != REFRESHING && isRecored && state != LOADING) {
+
+                        // 保证在设置padding的过程中，当前的位置一直是在head，否则如果当列表超出屏幕的话，当在上推的时候，列表会同时进行滚动
+
+                        // 可以松手去刷新了
+                        if (state == RELEASE_To_REFRESH) {
+
+                            setSelection(0);
+
+                            // 往上推了，推到了屏幕足够掩盖head的程度，但是还没有推到全部掩盖的地步
+                            if (((tempY - startY) / RATIO < headContentHeight) && (tempY - startY) > 0) {
+                                state = PULL_To_REFRESH;
+                                changeHeaderViewByState();
+
+                            }
+                            // 一下子推到顶了
+                            else if (tempY - startY <= 0) {
+                                state = DONE;
+                                changeHeaderViewByState();
+
+                            }
+                            // 往下拉了，或者还没有上推到屏幕顶部掩盖head的地步
+                            else {
+                                // 不用进行特别的操作，只用更新paddingTop的值就行了
+                            }
                         }
+                        // 还没有到达显示松开刷新的时候,DONE或者是PULL_To_REFRESH状态
+                        if (state == PULL_To_REFRESH) {
+
+                            setSelection(0);
+
+                            // 下拉到可以进入RELEASE_TO_REFRESH的状态
+                            if ((tempY - startY) / RATIO >= headContentHeight) {
+                                state = RELEASE_To_REFRESH;
+                                isBack = true;
+                                changeHeaderViewByState();
+                            }
+                            // 上推到顶了
+                            else if (tempY - startY <= 0) {
+                                state = DONE;
+                                changeHeaderViewByState();
+                                isPush = false;
+                            }
+                        }
+
+                        // done状态下
+                        if (state == DONE) {
+                            if (tempY - startY > 0) {
+                                state = PULL_To_REFRESH;
+                                changeHeaderViewByState();
+                            }
+                        }
+
+                        // 更新headView的size
+                        if (state == PULL_To_REFRESH) {
+                            llheader.setPadding(0, -1 * headContentHeight + (tempY - startY) / RATIO, 0, 0);
+
+                        }
+
+                        // 更新headView的paddingTop
+                        if (state == RELEASE_To_REFRESH) {
+                            llheader.setPadding(0, (tempY - startY) / RATIO - headContentHeight, 0, 0);
+                        }
+
                     }
 
-                    // 更新headView的size
-                    if (state == PULL_To_REFRESH) {
-                        llheader.setPadding(0, -1 * headContentHeight + (tempY - startY) / RATIO, 0, 0);
-
-                    }
-
-                    // 更新headView的paddingTop
-                    if (state == RELEASE_To_REFRESH) {
-                        llheader.setPadding(0, (tempY - startY) / RATIO - headContentHeight, 0, 0);
-                    }
-
+                    break;
                 }
-
-                break;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return super.onTouchEvent(event);
@@ -211,50 +220,58 @@ public class UDPullGetMoreListView extends ListView implements OnScrollListener 
 
     // 当状态改变时候，调用该方法，以更新界面
     private void changeHeaderViewByState() {
-        switch (state) {
-        case RELEASE_To_REFRESH:
-            pbLoading.setVisibility(View.GONE);
-            tvTips.setVisibility(View.VISIBLE);
-            tvTips.setText(getResources().getString(R.string.udesk_release_to_get_more));
+        try {
+            switch (state) {
+            case RELEASE_To_REFRESH:
+                pbLoading.setVisibility(View.GONE);
+                tvTips.setVisibility(View.VISIBLE);
+                tvTips.setText(getResources().getString(R.string.udesk_release_to_get_more));
 
-            break;
+                break;
 
-        case PULL_To_REFRESH:
-            pbLoading.setVisibility(View.GONE);
-            tvTips.setVisibility(View.VISIBLE);
-            // 是由RELEASE_To_REFRESH状态转变来的
-            if (isBack) {
-                isBack = false;
+            case PULL_To_REFRESH:
+                pbLoading.setVisibility(View.GONE);
+                tvTips.setVisibility(View.VISIBLE);
+                // 是由RELEASE_To_REFRESH状态转变来的
+                if (isBack) {
+                    isBack = false;
+                }
+                tvTips.setText(getResources().getString(R.string.udesk_get_more_history));
+                break;
+
+            case REFRESHING:
+
+                pbLoading.setVisibility(View.VISIBLE);
+                tvTips.setText(getResources().getString(R.string.udesk_loading_more));
+                llheader.setPadding(0, 0, 0, 0);
+
+                break;
+
+            case DONE:
+
+                pbLoading.setVisibility(View.GONE);
+                tvTips.setText(getResources().getString(R.string.udesk_get_more_history));
+                llheader.setPadding(0, -1 * headContentHeight, 0, 0);
+
+                break;
             }
-            tvTips.setText(getResources().getString(R.string.udesk_get_more_history));
-            break;
-
-        case REFRESHING:
-
-            pbLoading.setVisibility(View.VISIBLE);
-            tvTips.setText(getResources().getString(R.string.udesk_loading_more));
-            llheader.setPadding(0, 0, 0, 0);
-
-            break;
-
-        case DONE:
-
-            pbLoading.setVisibility(View.GONE);
-            tvTips.setText(getResources().getString(R.string.udesk_get_more_history));
-            llheader.setPadding(0, -1 * headContentHeight, 0, 0);
-
-            break;
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
         }
     }
 
     public void setOnRefreshListener(OnRefreshListener refreshListener) {
-        this.refreshListener = refreshListener;
-        isRefreshable = true;
+        try {
+            this.refreshListener = refreshListener;
+            isRefreshable = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
     public interface OnRefreshListener {
-        public void onRefresh();
+        void onRefresh();
     }
 
 

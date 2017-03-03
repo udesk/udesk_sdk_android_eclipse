@@ -33,7 +33,7 @@ public class UdeskUseGuideActivity extends Activity {
             UdeskSDKManager.getInstance().toLanuchHelperAcitivty(UdeskUseGuideActivity.this);
         }else if (v.getId() == R.id.udesk_group_conversation){
     
-            UdeskSDKManager.getInstance().showRobotOrConversation(UdeskUseGuideActivity.this);
+            UdeskSDKManager.getInstance().entryChat(UdeskUseGuideActivity.this);
         }else if (v.getId() == R.id.udesk_group_formtable){
   
             UdeskSDKManager.getInstance().goToForm(UdeskUseGuideActivity.this);
@@ -44,8 +44,11 @@ public class UdeskUseGuideActivity extends Activity {
             startActivity(funtionIntent);
         }else if(v.getId() == R.id.udesk_group_reset){
     
-            PreferenceHelper.write(UdeskUseGuideActivity.this, UdeskConst.SharePreParams.Udesk_Sharepre_Name,
-                    UdeskConst.SharePreParams.Udesk_SdkToken, "");
+        	 PreferenceHelper.write(UdeskUseGuideActivity.this, "init_base_name",
+                     "sdktoken", "");
+            Intent initIntent = new Intent();
+            initIntent.setClass(UdeskUseGuideActivity.this, UdeskInitKeyActivity.class);
+            startActivity(initIntent);
             finish();
         }
 
