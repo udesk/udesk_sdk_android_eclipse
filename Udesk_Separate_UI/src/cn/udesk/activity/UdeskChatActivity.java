@@ -1,6 +1,20 @@
 package cn.udesk.activity;
 
-import android.Manifest;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import udesk.core.UdeskCoreConst;
+import udesk.core.UdeskHttpFacade;
+import udesk.core.model.AgentInfo;
+import udesk.core.model.MessageInfo;
+import udesk.core.utils.UdeskUtils;
+import udesk.rx.Observable;
+import udesk.rx.Subscriber;
+import udesk.rx.functions.Func1;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -37,16 +51,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.tbruyelle.rxpermissions.RxPermissions;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.udesk.R;
 import cn.udesk.UdeskConst;
 import cn.udesk.UdeskSDKManager;
@@ -76,14 +80,6 @@ import cn.udesk.widget.UdeskExpandableLayout;
 import cn.udesk.widget.UdeskMultiMenuHorizontalWindow;
 import cn.udesk.widget.UdeskMultiMenuHorizontalWindow.OnPopMultiMenuClick;
 import cn.udesk.widget.UdeskTitleBar;
-import udesk.core.UdeskCoreConst;
-import udesk.core.UdeskHttpFacade;
-import udesk.core.model.AgentInfo;
-import udesk.core.model.MessageInfo;
-import udesk.core.utils.UdeskUtils;
-import udesk.rx.Observable;
-import udesk.rx.Subscriber;
-import udesk.rx.functions.Func1;
 
 public class UdeskChatActivity extends Activity implements IChatActivityView,
         OnClickListener, OnTouchListener, OnLongClickListener,

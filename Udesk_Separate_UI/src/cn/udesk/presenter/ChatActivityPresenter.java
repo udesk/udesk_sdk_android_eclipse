@@ -556,6 +556,35 @@ public class ChatActivityPresenter {
         upLoadVodieFile(audiopath, msg);
     }
 
+    /**
+     * 发送云端图片消息  直接发送云端的图片地址过去
+     */
+    public void sendCloudImageMsg(String imgUrl){
+    	try {
+            if (TextUtils.isEmpty(imgUrl)) {
+                UdeskUtils.showToast(mChatView.getContext(), mChatView.getContext().getString(R.string.udesk_upload_img_error));
+                return;
+            }
+            MessageInfo msg = buildSendMessage(
+                    UdeskConst.ChatMsgTypeString.TYPE_IMAGE,
+                    System.currentTimeMillis(), "", "");
+            msg.setMsgContent(imgUrl);
+
+            saveMessage(msg);
+            mChatView.addMessage(msg);
+            UdeskMessageManager.getInstance().sendMessage(msg.getMsgtype(),
+            		imgUrl, msg.getMsgId(),
+                    mChatView.getAgentInfo().getAgentJid(), 0, mChatView.getAgentInfo().getIm_sub_session_id());
+            UdeskDBManager.getInstance().addSendingMsg(msg.getMsgId(),
+                    UdeskConst.SendFlag.RESULT_SEND, System.currentTimeMillis());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } catch (OutOfMemoryError error) {
+            error.printStackTrace();
+        }
+    }
+
+    
     //发送图片消息
     public void sendBitmapMessage(Bitmap bitmap) {
         if (bitmap == null) {
@@ -640,8 +669,7 @@ public class ChatActivityPresenter {
             error.printStackTrace();
         }
     }
-
-
+    
     //构建消息模型
     public MessageInfo buildSendMessage(String msgType, long time, String text,
                                         String location) {
