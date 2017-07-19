@@ -1,6 +1,5 @@
 package cn.udesk;
 
-import android.content.Context;
 import android.text.TextUtils;
 
 import org.json.JSONArray;
@@ -14,6 +13,7 @@ import cn.udesk.config.UdeskBaseInfo;
 import cn.udesk.model.AgentGroupNode;
 import cn.udesk.model.OptionsModel;
 import cn.udesk.model.SDKIMSetting;
+import cn.udesk.model.StructModel;
 import cn.udesk.model.SurveyOptionsModel;
 import udesk.core.model.AgentInfo;
 import udesk.core.model.UDHelperArticleContentItem;
@@ -92,6 +92,7 @@ public class JsonUtils {
 					}
 					if (agentJson.has("jid")) {
 						agentInfo.setAgentJid(agentJson.getString("jid"));
+						UdeskBaseInfo.sendMsgTo = agentJson.getString("jid");
 					}
 					if (agentJson.has("agent_id")) {
 						agentInfo.setAgent_id(agentJson.getString("agent_id"));
@@ -223,31 +224,34 @@ public class JsonUtils {
 					JSONObject resultJson = new JSONObject(rootJson.getString("result"));
 					if (resultJson != null){
 						if (resultJson.has("enable_im_group")){
-							sdkimSetting.setEnable_im_group(resultJson.getBoolean("enable_im_group"));
+							sdkimSetting.setEnable_im_group(resultJson.get("enable_im_group"));
 						}
 						if (resultJson.has("in_session")){
-							sdkimSetting.setIn_session(resultJson.getBoolean("in_session"));
+							sdkimSetting.setIn_session(resultJson.get("in_session"));
 						}
 						if (resultJson.has("is_worktime")){
-							sdkimSetting.setIs_worktime(resultJson.getBoolean("is_worktime"));
+							sdkimSetting.setIs_worktime(resultJson.get("is_worktime"));
 						}
 						if (resultJson.has("has_robot")){
-							sdkimSetting.setHas_robot(resultJson.getBoolean("has_robot"));
+							sdkimSetting.setHas_robot(resultJson.get("has_robot"));
 						}
 						if (resultJson.has("enable_robot")){
-							sdkimSetting.setEnable_robot(resultJson.getBoolean("enable_robot"));
+							sdkimSetting.setEnable_robot(resultJson.get("enable_robot"));
 						}
 						if (resultJson.has("enable_sdk_robot")){
-							sdkimSetting.setEnable_sdk_robot(resultJson.getBoolean("enable_sdk_robot"));
+							sdkimSetting.setEnable_sdk_robot(resultJson.get("enable_sdk_robot"));
 						}
 						if (resultJson.has("enable_agent")){
-							sdkimSetting.setEnable_agent(resultJson.getBoolean("enable_agent"));
+							sdkimSetting.setEnable_agent(resultJson.get("enable_agent"));
 						}
 						if (resultJson.has("enable_web_im_feedback")){
-							sdkimSetting.setEnable_web_im_feedback(resultJson.getBoolean("enable_web_im_feedback"));
+							sdkimSetting.setEnable_web_im_feedback(resultJson.get("enable_web_im_feedback"));
 						}
 						if (resultJson.has("no_reply_hint")){
 							sdkimSetting.setNo_reply_hint(resultJson.get("no_reply_hint"));
+						}
+						if (resultJson.has("enable_im_survey")){
+							sdkimSetting.setEnable_im_survey(resultJson.get("enable_im_survey"));
 						}
 						if(resultJson.has("robot")){
 							sdkimSetting.setRobot(resultJson.get("robot"));
@@ -261,6 +265,48 @@ public class JsonUtils {
 		}
 
 		return  sdkimSetting;
+	}
+
+	public static StructModel parserStructMsg(String jsonString){
+		StructModel structModel = new StructModel();
+		try {
+			JSONObject rootJson = new JSONObject(jsonString);
+			if (rootJson.has("title")){
+				structModel.setTitle(rootJson.getString("title"));
+			}
+			if (rootJson.has("description")){
+				structModel.setDescription(rootJson.getString("description"));
+			}
+			if (rootJson.has("img_url")){
+				structModel.setImg_url(rootJson.getString("img_url"));
+			}
+
+			if (rootJson.has("buttons")){
+				JSONArray btnArray = rootJson.optJSONArray("buttons");
+				List<StructModel.ButtonsBean> structBtns = new ArrayList<StructModel.ButtonsBean>();
+				if (btnArray != null && btnArray.length() > 0) {
+					for (int i = 0; i < btnArray.length(); i++) {
+						JSONObject data = btnArray.optJSONObject(i);
+						StructModel.ButtonsBean  buttonsBean = new StructModel.ButtonsBean();
+						if (data.has("type")){
+							buttonsBean.setType(data.getString("type"));
+						}
+						if (data.has("text")){
+							buttonsBean.setText(data.getString("text"));
+						}
+						if (data.has("value")){
+							buttonsBean.setValue(data.getString("value"));
+						}
+						structBtns.add(buttonsBean);
+					}
+				}
+				structModel.setButtons(structBtns);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return  structModel;
 	}
 
 }

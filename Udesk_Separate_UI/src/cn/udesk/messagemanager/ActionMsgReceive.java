@@ -21,23 +21,23 @@ public class ActionMsgReceive implements PacketExtensionProvider {
     public PacketExtension parseExtension(XmlPullParser parser) throws XmlPullParserException, IOException, SmackException {
         ActionMsgXmpp actionMsgXmpp = null;
         boolean stop = false;
-        String n = null;
+        String xmlName = null;
         int evtType;
         while (!stop){
             evtType = parser.getEventType();
-            n = parser.getName();
+            xmlName = parser.getName();
             switch (evtType){
                 case XmlPullParser.START_TAG:
-                    if ("action".equals(n)){
+                    if ("action".equals(xmlName)){
                         String type  = parser.getAttributeValue("", "type");
                         String actionText = parser.nextText();
-                        actionMsgXmpp = new ActionMsgXmpp(ActionMsgXmpp.elementName, ActionMsgXmpp.namespace);
+                        actionMsgXmpp = new ActionMsgXmpp();
                         actionMsgXmpp.setType(type);
                         actionMsgXmpp.setActionText(actionText);
                     }
                     break;
                 case XmlPullParser.END_TAG:
-                    if(n.equals("action")){
+                    if(xmlName.equals("action")){
                         stop = true;
                     }
                     break;

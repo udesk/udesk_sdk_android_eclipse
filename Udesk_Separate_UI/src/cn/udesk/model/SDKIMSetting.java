@@ -22,18 +22,19 @@ public class SDKIMSetting {
     private Object message;
 
     //是否配置了引导页
-    private boolean enable_im_group;
+    private Object enable_im_group;
     //会话是否关闭
-    private boolean in_session;
+    private Object in_session;
     //是否在工作时间
-    private boolean is_worktime;
-    private boolean has_robot;
-    private boolean enable_robot;
-    private boolean enable_sdk_robot;
-    private boolean enable_agent;
-    private boolean enable_web_im_feedback;
+    private Object is_worktime;
+    private Object has_robot;
+    private Object enable_robot;
+    private Object enable_sdk_robot;
+    private Object enable_agent;
+    private Object enable_web_im_feedback;
     private Object no_reply_hint;
     private Object robot;
+    private Object enable_im_survey;
     public int getCode() {
         return code;
     }
@@ -51,80 +52,109 @@ public class SDKIMSetting {
     }
 
     public boolean getEnable_im_group() {
-      
-        return enable_im_group;
+        if (enable_im_group instanceof  Boolean){
+            return (Boolean) enable_im_group;
+        }
+        return false;
     }
 
-    public void setEnable_im_group(boolean enable_im_group) {
+    public void setEnable_im_group(Object enable_im_group) {
         this.enable_im_group = enable_im_group;
     }
 
     public boolean getIn_session() {
-      
-        return in_session;
+        if (in_session instanceof  Boolean){
+            return (Boolean) in_session;
+        }
+        return false;
 
     }
 
-    public void setIn_session(boolean in_session) {
+    public void setIn_session(Object in_session) {
         this.in_session = in_session;
     }
 
     public boolean getIs_worktime() {
-       
-        return is_worktime;
+        if (is_worktime instanceof  Boolean){
+            return (Boolean) is_worktime;
+        }
+        return false;
     }
 
-    public void setIs_worktime(boolean is_worktime) {
+    public void setIs_worktime(Object is_worktime) {
         this.is_worktime = is_worktime;
     }
 
     public boolean getHas_robot() {
-       
-        return has_robot;
+        if (has_robot instanceof  Boolean){
+            return (Boolean) has_robot;
+        }
+        return false;
 
     }
 
-    public void setHas_robot(boolean has_robot) {
+    public void setHas_robot(Object has_robot) {
         this.has_robot = has_robot;
     }
 
     public boolean getEnable_robot() {
-       
-        return enable_robot;
+        if (enable_robot instanceof  Boolean){
+            return (Boolean) enable_robot;
+        }
+        return false;
     }
 
-    public void setEnable_robot(boolean enable_robot) {
+    public void setEnable_robot(Object enable_robot) {
         this.enable_robot = enable_robot;
     }
 
     public boolean getEnable_sdk_robot() {
-       
-        return enable_sdk_robot;
+        if (enable_sdk_robot instanceof  Boolean){
+            return (Boolean) enable_sdk_robot;
+        }
+        return false;
     }
 
-    public void setEnable_sdk_robot(boolean enable_sdk_robot) {
+    public void setEnable_sdk_robot(Object enable_sdk_robot) {
         this.enable_sdk_robot = enable_sdk_robot;
     }
 
     public String getEnable_agent() {
-    	 if (enable_agent){
-             return  "true";
-         }else{
-             return  "false";
-         }
+        if (enable_agent instanceof  Boolean){
+             boolean transfer = (Boolean) enable_agent;
+            if (transfer){
+                return  "true";
+            }else{
+                return  "false";
+            }
+        }
+        return "false";
     }
 
-    public void setEnable_agent(boolean enable_agent) {
+    public void setEnable_agent(Object enable_agent) {
         this.enable_agent = enable_agent;
     }
 
     public boolean getEnable_web_im_feedback() {
-     
-        return enable_web_im_feedback;
+        if (enable_web_im_feedback instanceof  Boolean){
+            return (Boolean) enable_web_im_feedback;
+        }
+        return false;
     }
 
-    public void setEnable_web_im_feedback(boolean enable_web_im_feedback) {
+    public void setEnable_web_im_feedback(Object enable_web_im_feedback) {
         this.enable_web_im_feedback = enable_web_im_feedback;
+    }
+    
+    public boolean getEnable_im_survey() {
+        if (enable_im_survey instanceof Boolean) {
+            return (Boolean) enable_im_survey;
+        }
+        return false;
+    }
+
+    public void setEnable_im_survey(Object enable_im_survey) {
+        this.enable_im_survey = enable_im_survey;
     }
 
     public String getNo_reply_hint() {
