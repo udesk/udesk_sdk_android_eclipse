@@ -1610,7 +1610,7 @@ public class UdeskChatActivity extends Activity implements IChatActivityView,
                 @Override
                 public void run() {
                     setNoAgentStatus(getResources().getString(
-                            R.string.udesk_label_customer_offline));
+                            R.string.udesk_close_chart));
                     mTitlebar.getudeskStateImg().setImageResource(R.drawable.udesk_offline_status);
                 }
             });
