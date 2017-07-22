@@ -9,6 +9,36 @@ package cn.udesk;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+         */
+        public static int actualImageScaleType=0x7f01000b;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int actualImageUri=0x7f010019;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int backgroundImage=0x7f01000c;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -17,7 +47,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int civ_border_color=0x7f01000e;
+        public static int civ_border_color=0x7f010028;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -25,7 +55,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int civ_border_overlay=0x7f01000f;
+        public static int civ_border_overlay=0x7f010029;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -35,7 +65,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int civ_border_width=0x7f01000d;
+        public static int civ_border_width=0x7f010027;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -44,7 +74,168 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int civ_fill_color=0x7f010010;
+        public static int civ_fill_color=0x7f01002a;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int fadeDuration=0x7f010000;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int failureImage=0x7f010006;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+         */
+        public static int failureImageScaleType=0x7f010007;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int overlayImage=0x7f01000d;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int placeholderImage=0x7f010002;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+         */
+        public static int placeholderImageScaleType=0x7f010003;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int pressedStateOverlayImage=0x7f01000e;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int progressBarAutoRotateInterval=0x7f01000a;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int progressBarImage=0x7f010008;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+         */
+        public static int progressBarImageScaleType=0x7f010009;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int retryImage=0x7f010004;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+         */
+        public static int retryImageScaleType=0x7f010005;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundAsCircle=0x7f01000f;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundBottomLeft=0x7f010014;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundBottomRight=0x7f010013;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundTopLeft=0x7f010011;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundTopRight=0x7f010012;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundWithOverlayColor=0x7f010015;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -54,7 +245,16 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udesk_arrow_height=0x7f010002;
+        public static int roundedCornerRadius=0x7f010010;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int roundingBorderColor=0x7f010017;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -64,7 +264,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udesk_arrow_top=0x7f010003;
+        public static int roundingBorderPadding=0x7f010018;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -74,7 +274,37 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udesk_arrow_width=0x7f010001;
+        public static int roundingBorderWidth=0x7f010016;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int udesk_arrow_height=0x7f01001c;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int udesk_arrow_top=0x7f01001d;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int udesk_arrow_width=0x7f01001b;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -85,11 +315,11 @@ containing a value of this type.
 <tr><td><code>right</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static int udesk_direction=0x7f010006;
+        public static int udesk_direction=0x7f010020;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static int udesk_ninePNG=0x7f010000;
+        public static int udesk_ninePNG=0x7f01001a;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -99,7 +329,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udesk_offset=0x7f010004;
+        public static int udesk_offset=0x7f01001e;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -109,7 +339,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udesk_radius=0x7f010005;
+        public static int udesk_radius=0x7f01001f;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -118,7 +348,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udeskvoiceLineColor=0x7f010007;
+        public static int udeskvoiceLineColor=0x7f010021;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -128,7 +358,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udeskvoiceLineHeight=0x7f010009;
+        public static int udeskvoiceLineHeight=0x7f010023;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -138,7 +368,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udeskvoiceLineMaxHeight=0x7f01000a;
+        public static int udeskvoiceLineMaxHeight=0x7f010024;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -148,7 +378,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udeskvoiceLineWidth=0x7f010008;
+        public static int udeskvoiceLineWidth=0x7f010022;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -157,7 +387,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udeskvoiceTextColor=0x7f01000b;
+        public static int udeskvoiceTextColor=0x7f010025;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -167,7 +397,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static int udeskvoiceTextSize=0x7f01000c;
+        public static int udeskvoiceTextSize=0x7f010026;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int viewAspectRatio=0x7f010001;
     }
     public static final class color {
         /**  textview 超链接的颜色 
@@ -254,22 +492,23 @@ containing a value of this type.
     public static final class dimen {
         public static int udesk_1=0x7f050004;
         public static int udesk_10=0x7f05000a;
-        public static int udesk_100=0x7f050019;
-        public static int udesk_120=0x7f05001a;
+        public static int udesk_100=0x7f05001a;
+        public static int udesk_105=0x7f05001b;
+        public static int udesk_120=0x7f05001c;
         public static int udesk_13=0x7f05000b;
-        public static int udesk_140=0x7f05001b;
+        public static int udesk_140=0x7f05001d;
         public static int udesk_15=0x7f05000c;
-        public static int udesk_160=0x7f05001c;
-        public static int udesk_190=0x7f05001d;
+        public static int udesk_160=0x7f05001e;
+        public static int udesk_190=0x7f05001f;
         public static int udesk_2=0x7f050005;
         public static int udesk_20=0x7f05000d;
         public static int udesk_22=0x7f05000e;
-        public static int udesk_220=0x7f05001e;
-        public static int udesk_240=0x7f05001f;
+        public static int udesk_220=0x7f050020;
+        public static int udesk_240=0x7f050021;
         public static int udesk_25=0x7f05000f;
         public static int udesk_3=0x7f050006;
         public static int udesk_30=0x7f050010;
-        public static int udesk_300=0x7f050020;
+        public static int udesk_300=0x7f050022;
         public static int udesk_35=0x7f050011;
         public static int udesk_4=0x7f050007;
         public static int udesk_40=0x7f050012;
@@ -281,23 +520,24 @@ containing a value of this type.
         public static int udesk_70=0x7f050017;
         public static int udesk_8=0x7f050009;
         public static int udesk_80=0x7f050018;
-        public static int udesk_chat_context_margin_other_derction=0x7f05002a;
-        public static int udesk_chat_head=0x7f050027;
-        public static int udesk_chat_head_margin=0x7f050028;
+        public static int udesk_95=0x7f050019;
+        public static int udesk_chat_context_margin_other_derction=0x7f05002c;
+        public static int udesk_chat_head=0x7f050029;
+        public static int udesk_chat_head_margin=0x7f05002a;
         public static int udesk_chat_head_margin_left_or_right=0x7f050003;
-        public static int udesk_chat_msg_send_fail_pic=0x7f050029;
+        public static int udesk_chat_msg_send_fail_pic=0x7f05002b;
         /**  IM界面，商品咨询中 缩略图的宽度和高度 
          */
-        public static int udesk_im_commondity_width_height=0x7f05002c;
+        public static int udesk_im_commondity_width_height=0x7f05002e;
         /**  整体界面中，TitleBar中文字的大小 
          */
-        public static int udesk_navi_text_size=0x7f05002b;
-        public static int udesk_sp12=0x7f050021;
-        public static int udesk_sp14=0x7f050022;
-        public static int udesk_sp15=0x7f050023;
-        public static int udesk_sp16=0x7f050024;
-        public static int udesk_sp18=0x7f050025;
-        public static int udesk_sp20=0x7f050026;
+        public static int udesk_navi_text_size=0x7f05002d;
+        public static int udesk_sp12=0x7f050023;
+        public static int udesk_sp14=0x7f050024;
+        public static int udesk_sp15=0x7f050025;
+        public static int udesk_sp16=0x7f050026;
+        public static int udesk_sp18=0x7f050027;
+        public static int udesk_sp20=0x7f050028;
         /**  整体界面中，顶部Title条的高度 
          */
         public static int udesk_titlebar_height=0x7f050000;
@@ -307,241 +547,279 @@ containing a value of this type.
         public static int udesk_titlebar_right_margin=0x7f050001;
     }
     public static final class drawable {
-        public static int puw_bg_corners=0x7f020000;
-        public static int puw_bg_left_corners=0x7f020001;
-        public static int puw_bg_left_false_corners=0x7f020002;
-        public static int puw_bg_right_corners=0x7f020003;
-        public static int puw_bg_right_false_corners=0x7f020004;
-        public static int puw_bt_selecter_left=0x7f020005;
-        public static int puw_bt_selecter_right=0x7f020006;
-        public static int udesk_001=0x7f020007;
-        public static int udesk_002=0x7f020008;
-        public static int udesk_003=0x7f020009;
-        public static int udesk_004=0x7f02000a;
-        public static int udesk_005=0x7f02000b;
-        public static int udesk_006=0x7f02000c;
-        public static int udesk_007=0x7f02000d;
-        public static int udesk_008=0x7f02000e;
-        public static int udesk_009=0x7f02000f;
-        public static int udesk_010=0x7f020010;
-        public static int udesk_011=0x7f020011;
-        public static int udesk_012=0x7f020012;
-        public static int udesk_013=0x7f020013;
-        public static int udesk_014=0x7f020014;
-        public static int udesk_015=0x7f020015;
-        public static int udesk_016=0x7f020016;
-        public static int udesk_017=0x7f020017;
-        public static int udesk_018=0x7f020018;
-        public static int udesk_019=0x7f020019;
-        public static int udesk_020=0x7f02001a;
-        public static int udesk_021=0x7f02001b;
-        public static int udesk_022=0x7f02001c;
-        public static int udesk_023=0x7f02001d;
-        public static int udesk_024=0x7f02001e;
-        public static int udesk_025=0x7f02001f;
-        public static int udesk_026=0x7f020020;
-        public static int udesk_027=0x7f020021;
-        public static int udesk_028=0x7f020022;
-        public static int udesk_029=0x7f020023;
-        public static int udesk_anim_progress=0x7f020024;
-        public static int udesk_audio_tip=0x7f020025;
-        public static int udesk_bg_commodity_link=0x7f020026;
-        public static int udesk_camer_normal1=0x7f020027;
-        public static int udesk_camer_press1=0x7f020028;
-        public static int udesk_cancle_audio=0x7f020029;
-        public static int udesk_defalut_image_loading=0x7f02002a;
-        public static int udesk_defualt_failure=0x7f02002b;
-        public static int udesk_dlg_select_item_pressed_radio=0x7f02002c;
-        public static int udesk_dlg_select_singlechoice_check_mark_light=0x7f02002d;
-        public static int udesk_edit_cursor=0x7f02002e;
-        public static int udesk_emoji_normal1=0x7f02002f;
-        public static int udesk_emoji_press1=0x7f020030;
-        public static int udesk_helper_shape_bg=0x7f020031;
-        public static int udesk_helpersearch_editext=0x7f020032;
-        public static int udesk_ic_arrow=0x7f020033;
-        public static int udesk_ic_search=0x7f020034;
-        public static int udesk_im_default_agent_avatar=0x7f020035;
-        public static int udesk_im_default_user_avatar=0x7f020036;
-        public static int udesk_im_item_bg_left=0x7f020037;
-        public static int udesk_im_item_bg_right=0x7f020038;
-        public static int udesk_im_record_left_default=0x7f020039;
-        public static int udesk_im_record_left_play1=0x7f02003a;
-        public static int udesk_im_record_left_play2=0x7f02003b;
-        public static int udesk_im_record_play_left=0x7f02003c;
-        public static int udesk_im_record_play_right=0x7f02003d;
-        public static int udesk_im_record_right_default=0x7f02003e;
-        public static int udesk_im_record_right_play1=0x7f02003f;
-        public static int udesk_im_record_right_play2=0x7f020040;
-        public static int udesk_im_retry=0x7f020041;
-        public static int udesk_im_send=0x7f020042;
-        public static int udesk_im_send_press=0x7f020043;
-        public static int udesk_image_normal1=0x7f020044;
-        public static int udesk_image_press1=0x7f020045;
-        public static int udesk_imgroup_bg_selector=0x7f020046;
-        public static int udesk_offline_status=0x7f020047;
-        public static int udesk_online_status=0x7f020048;
-        public static int udesk_pop_background=0x7f020049;
-        public static int udesk_progressbar=0x7f02004a;
-        public static int udesk_radio_checkbox=0x7f02004b;
-        public static int udesk_radio_uncheckbox=0x7f02004c;
-        public static int udesk_selector_camer_img=0x7f02004d;
-        public static int udesk_selector_emoji_img=0x7f02004e;
-        public static int udesk_selector_image_img=0x7f02004f;
-        public static int udesk_selector_survy_img=0x7f020050;
-        public static int udesk_selector_voice_img=0x7f020051;
-        public static int udesk_struct_bg=0x7f020052;
-        public static int udesk_survy_normal=0x7f020053;
-        public static int udesk_survy_press1=0x7f020054;
-        public static int udesk_tip_agent=0x7f020055;
-        public static int udesk_titlebar_back=0x7f020056;
-        public static int udesk_voice_normal1=0x7f020057;
-        public static int udesk_voice_press1=0x7f020058;
+        public static int progress_drawable=0x7f020000;
+        public static int puw_bg_corners=0x7f020001;
+        public static int puw_bg_left_corners=0x7f020002;
+        public static int puw_bg_left_false_corners=0x7f020003;
+        public static int puw_bg_right_corners=0x7f020004;
+        public static int puw_bg_right_false_corners=0x7f020005;
+        public static int puw_bt_selecter_left=0x7f020006;
+        public static int puw_bt_selecter_right=0x7f020007;
+        public static int udesk_001=0x7f020008;
+        public static int udesk_002=0x7f020009;
+        public static int udesk_003=0x7f02000a;
+        public static int udesk_004=0x7f02000b;
+        public static int udesk_005=0x7f02000c;
+        public static int udesk_006=0x7f02000d;
+        public static int udesk_007=0x7f02000e;
+        public static int udesk_008=0x7f02000f;
+        public static int udesk_009=0x7f020010;
+        public static int udesk_010=0x7f020011;
+        public static int udesk_011=0x7f020012;
+        public static int udesk_012=0x7f020013;
+        public static int udesk_013=0x7f020014;
+        public static int udesk_014=0x7f020015;
+        public static int udesk_015=0x7f020016;
+        public static int udesk_016=0x7f020017;
+        public static int udesk_017=0x7f020018;
+        public static int udesk_018=0x7f020019;
+        public static int udesk_019=0x7f02001a;
+        public static int udesk_020=0x7f02001b;
+        public static int udesk_021=0x7f02001c;
+        public static int udesk_022=0x7f02001d;
+        public static int udesk_023=0x7f02001e;
+        public static int udesk_024=0x7f02001f;
+        public static int udesk_025=0x7f020020;
+        public static int udesk_026=0x7f020021;
+        public static int udesk_027=0x7f020022;
+        public static int udesk_028=0x7f020023;
+        public static int udesk_029=0x7f020024;
+        public static int udesk_anim_progress=0x7f020025;
+        public static int udesk_audio_tip=0x7f020026;
+        public static int udesk_bg_commodity_link=0x7f020027;
+        public static int udesk_camer_normal1=0x7f020028;
+        public static int udesk_camer_press1=0x7f020029;
+        public static int udesk_cancle_audio=0x7f02002a;
+        public static int udesk_defalut_image_loading=0x7f02002b;
+        public static int udesk_defualt_failure=0x7f02002c;
+        public static int udesk_dlg_select_item_pressed_radio=0x7f02002d;
+        public static int udesk_dlg_select_singlechoice_check_mark_light=0x7f02002e;
+        public static int udesk_edit_cursor=0x7f02002f;
+        public static int udesk_emoji_normal1=0x7f020030;
+        public static int udesk_emoji_press1=0x7f020031;
+        public static int udesk_event_bg=0x7f020032;
+        public static int udesk_file_icon=0x7f020033;
+        public static int udesk_file_icon_press=0x7f020034;
+        public static int udesk_helper_shape_bg=0x7f020035;
+        public static int udesk_helpersearch_editext=0x7f020036;
+        public static int udesk_ic_arrow=0x7f020037;
+        public static int udesk_ic_search=0x7f020038;
+        public static int udesk_im_default_agent_avatar=0x7f020039;
+        public static int udesk_im_default_user_avatar=0x7f02003a;
+        public static int udesk_im_item_bg_left=0x7f02003b;
+        public static int udesk_im_item_bg_right=0x7f02003c;
+        public static int udesk_im_record_left_default=0x7f02003d;
+        public static int udesk_im_record_left_play1=0x7f02003e;
+        public static int udesk_im_record_left_play2=0x7f02003f;
+        public static int udesk_im_record_play_left=0x7f020040;
+        public static int udesk_im_record_play_right=0x7f020041;
+        public static int udesk_im_record_right_default=0x7f020042;
+        public static int udesk_im_record_right_play1=0x7f020043;
+        public static int udesk_im_record_right_play2=0x7f020044;
+        public static int udesk_im_retry=0x7f020045;
+        public static int udesk_im_send=0x7f020046;
+        public static int udesk_im_send_press=0x7f020047;
+        public static int udesk_image_normal1=0x7f020048;
+        public static int udesk_image_press1=0x7f020049;
+        public static int udesk_imgroup_bg_selector=0x7f02004a;
+        public static int udesk_offline_status=0x7f02004b;
+        public static int udesk_online_status=0x7f02004c;
+        public static int udesk_pop_background=0x7f02004d;
+        public static int udesk_progressbar=0x7f02004e;
+        public static int udesk_radio_checkbox=0x7f02004f;
+        public static int udesk_radio_uncheckbox=0x7f020050;
+        public static int udesk_selector_camer_img=0x7f020051;
+        public static int udesk_selector_emoji_img=0x7f020052;
+        public static int udesk_selector_file_img=0x7f020053;
+        public static int udesk_selector_image_img=0x7f020054;
+        public static int udesk_selector_survy_img=0x7f020055;
+        public static int udesk_selector_voice_img=0x7f020056;
+        public static int udesk_struct_bg=0x7f020057;
+        public static int udesk_survy_normal=0x7f020058;
+        public static int udesk_survy_press1=0x7f020059;
+        public static int udesk_tip_agent=0x7f02005a;
+        public static int udesk_titlebar_back=0x7f02005b;
+        public static int udesk_voice_normal1=0x7f02005c;
+        public static int udesk_voice_press1=0x7f02005d;
     }
     public static final class id {
-        public static int expand_value=0x7f08002f;
-        public static int image_line=0x7f080021;
-        public static int left=0x7f080000;
-        public static int right=0x7f080001;
-        public static int text_context=0x7f08002e;
-        public static int text_des_line=0x7f080025;
-        public static int udesk_audio_cancle_image=0x7f080033;
-        public static int udesk_audio_pop=0x7f080034;
-        public static int udesk_audio_tips=0x7f080031;
-        public static int udesk_back_img=0x7f080052;
-        public static int udesk_back_linear=0x7f080051;
-        public static int udesk_bottom=0x7f08003c;
-        public static int udesk_bottom_audios=0x7f080030;
-        public static int udesk_bottom_emoji_pannel=0x7f08003b;
-        public static int udesk_bottom_emojis=0x7f08003a;
-        public static int udesk_bottom_input=0x7f08003d;
-        public static int udesk_bottom_option_camera=0x7f080041;
-        public static int udesk_bottom_option_photo=0x7f080042;
-        public static int udesk_bottom_send=0x7f08003e;
-        public static int udesk_bottom_show_emoji=0x7f08003f;
-        public static int udesk_bottom_survy_rl=0x7f080043;
-        public static int udesk_bottom_voice_rl=0x7f080040;
-        public static int udesk_cancle=0x7f08004e;
-        public static int udesk_change_status_info=0x7f08000d;
-        public static int udesk_check_box=0x7f08002d;
-        public static int udesk_commit_root=0x7f080035;
-        public static int udesk_confirm_pop_content=0x7f080029;
-        public static int udesk_confirm_pop_negative=0x7f08002a;
-        public static int udesk_confirm_pop_panel=0x7f080028;
-        public static int udesk_confirm_pop_positive=0x7f08002b;
-        public static int udesk_content=0x7f080053;
-        public static int udesk_conversation=0x7f08000e;
-        public static int udesk_demo_activity=0x7f080002;
-        public static int udesk_desc=0x7f08004b;
-        public static int udesk_emoji_picture=0x7f080044;
-        public static int udesk_get_more_progress=0x7f080046;
-        public static int udesk_get_more_tips=0x7f080045;
-        public static int udesk_help_content_webview=0x7f080010;
-        public static int udesk_helper_list=0x7f080008;
-        public static int udesk_helper_search=0x7f080004;
-        public static int udesk_helper_search_button=0x7f080005;
-        public static int udesk_helper_search_input=0x7f080006;
-        public static int udesk_horvoiceview=0x7f080032;
-        public static int udesk_im_commondity_link=0x7f080039;
-        public static int udesk_im_commondity_subtitle=0x7f080038;
-        public static int udesk_im_commondity_thumbnail=0x7f080036;
-        public static int udesk_im_commondity_title=0x7f080037;
-        public static int udesk_im_content=0x7f08000c;
-        public static int udesk_im_image=0x7f08001c;
-        public static int udesk_im_img_item_content=0x7f08001b;
-        public static int udesk_im_item_record_duration=0x7f080018;
-        public static int udesk_im_item_record_play=0x7f080017;
-        public static int udesk_im_record_item_content=0x7f080016;
-        public static int udesk_im_wait=0x7f08001a;
-        public static int udesk_iv_head=0x7f080013;
-        public static int udesk_iv_status=0x7f080019;
-        public static int udesk_list_choice=0x7f08004c;
-        public static int udesk_listviewcontain_view=0x7f080007;
-        public static int udesk_loading=0x7f08000b;
-        public static int udesk_loading_txt=0x7f080047;
-        public static int udesk_multi_horizontal_item=0x7f080048;
-        public static int udesk_navi_may_search_fail=0x7f080009;
-        public static int udesk_navi_to_im=0x7f08000a;
-        public static int udesk_nick_name=0x7f080014;
-        public static int udesk_ok=0x7f08004f;
-        public static int udesk_options_listview=0x7f08004a;
-        public static int udesk_panel_zoom_imageview=0x7f080057;
-        public static int udesk_progressbar=0x7f08002c;
-        public static int udesk_redirect_msg=0x7f08001d;
-        public static int udesk_rl_body=0x7f080015;
-        public static int udesk_root=0x7f080050;
-        public static int udesk_status=0x7f080054;
-        public static int udesk_struct_btn_container=0x7f080026;
-        public static int udesk_struct_des=0x7f080024;
-        public static int udesk_struct_img=0x7f080020;
-        public static int udesk_struct_img_container=0x7f08001f;
-        public static int udesk_struct_text_container=0x7f080022;
-        public static int udesk_struct_title=0x7f080023;
-        public static int udesk_subject=0x7f08000f;
-        public static int udesk_survy_bottom=0x7f08004d;
-        public static int udesk_title=0x7f080049;
-        public static int udesk_titlebar_right=0x7f080056;
-        public static int udesk_transfer_agent=0x7f080055;
-        public static int udesk_tv_msg=0x7f08001e;
-        public static int udesk_tv_rich_msg=0x7f080027;
-        public static int udesk_tv_time=0x7f080012;
-        public static int udesk_webview_root=0x7f080011;
-        public static int udesk_zoom_imageview=0x7f080059;
-        public static int udesk_zoom_save=0x7f080058;
-        public static int udesktitlebar=0x7f080003;
+        public static int center=0x7f080000;
+        public static int centerCrop=0x7f080001;
+        public static int centerInside=0x7f080002;
+        public static int expand_value=0x7f08003e;
+        public static int fitCenter=0x7f080003;
+        public static int fitEnd=0x7f080004;
+        public static int fitStart=0x7f080005;
+        public static int fitXY=0x7f080006;
+        public static int focusCrop=0x7f080007;
+        public static int image_line=0x7f080030;
+        public static int left=0x7f080009;
+        public static int none=0x7f080008;
+        public static int right=0x7f08000a;
+        public static int text_context=0x7f08003d;
+        public static int text_des_line=0x7f080034;
+        public static int udesk_audio_cancle_image=0x7f080042;
+        public static int udesk_audio_pop=0x7f080043;
+        public static int udesk_audio_tips=0x7f080040;
+        public static int udesk_back_img=0x7f080063;
+        public static int udesk_back_linear=0x7f080062;
+        public static int udesk_bottom=0x7f08004b;
+        public static int udesk_bottom_audios=0x7f08003f;
+        public static int udesk_bottom_emoji_pannel=0x7f08004a;
+        public static int udesk_bottom_emojis=0x7f080049;
+        public static int udesk_bottom_input=0x7f08004c;
+        public static int udesk_bottom_option_camera=0x7f080051;
+        public static int udesk_bottom_option_file=0x7f080053;
+        public static int udesk_bottom_option_photo=0x7f080052;
+        public static int udesk_bottom_send=0x7f08004d;
+        public static int udesk_bottom_show_emoji=0x7f08004f;
+        public static int udesk_bottom_survy_rl=0x7f080054;
+        public static int udesk_bottom_voice_rl=0x7f080050;
+        public static int udesk_cancle=0x7f08005f;
+        public static int udesk_change_status_info=0x7f080016;
+        public static int udesk_check_box=0x7f08003c;
+        public static int udesk_commit_root=0x7f080044;
+        public static int udesk_confirm_pop_content=0x7f080038;
+        public static int udesk_confirm_pop_negative=0x7f080039;
+        public static int udesk_confirm_pop_panel=0x7f080037;
+        public static int udesk_confirm_pop_positive=0x7f08003a;
+        public static int udesk_content=0x7f080064;
+        public static int udesk_conversation=0x7f080017;
+        public static int udesk_demo_activity=0x7f08000b;
+        public static int udesk_desc=0x7f08005c;
+        public static int udesk_emoji_picture=0x7f080055;
+        public static int udesk_event=0x7f08001c;
+        public static int udesk_file_name=0x7f080027;
+        public static int udesk_file_operater=0x7f08002a;
+        public static int udesk_file_size=0x7f080029;
+        public static int udesk_file_view=0x7f080026;
+        public static int udesk_get_more_progress=0x7f080057;
+        public static int udesk_get_more_tips=0x7f080056;
+        public static int udesk_help_content_webview=0x7f080019;
+        public static int udesk_helper_list=0x7f080011;
+        public static int udesk_helper_search=0x7f08000d;
+        public static int udesk_helper_search_button=0x7f08000e;
+        public static int udesk_helper_search_input=0x7f08000f;
+        public static int udesk_horvoiceview=0x7f080041;
+        public static int udesk_im_commondity_link=0x7f080048;
+        public static int udesk_im_commondity_subtitle=0x7f080047;
+        public static int udesk_im_commondity_thumbnail=0x7f080045;
+        public static int udesk_im_commondity_title=0x7f080046;
+        public static int udesk_im_container=0x7f08004e;
+        public static int udesk_im_content=0x7f080015;
+        public static int udesk_im_image=0x7f08002c;
+        public static int udesk_im_img_item_content=0x7f08002b;
+        public static int udesk_im_item_record_duration=0x7f080025;
+        public static int udesk_im_item_record_play=0x7f080024;
+        public static int udesk_im_record_item_content=0x7f080023;
+        public static int udesk_im_wait=0x7f080020;
+        public static int udesk_iv_head=0x7f08001d;
+        public static int udesk_iv_status=0x7f08001f;
+        public static int udesk_list_choice=0x7f08005d;
+        public static int udesk_listviewcontain_view=0x7f080010;
+        public static int udesk_loading=0x7f080014;
+        public static int udesk_loading_txt=0x7f080058;
+        public static int udesk_multi_horizontal_item=0x7f080059;
+        public static int udesk_navi_may_search_fail=0x7f080012;
+        public static int udesk_navi_to_im=0x7f080013;
+        public static int udesk_nick_name=0x7f08001e;
+        public static int udesk_ok=0x7f080060;
+        public static int udesk_options_listview=0x7f08005b;
+        public static int udesk_panel_zoom_imageview=0x7f080068;
+        public static int udesk_progress=0x7f080028;
+        public static int udesk_progressbar=0x7f08003b;
+        public static int udesk_redirect_msg=0x7f08002d;
+        public static int udesk_rl_body=0x7f080021;
+        public static int udesk_root=0x7f080061;
+        public static int udesk_status=0x7f080065;
+        public static int udesk_struct_btn_container=0x7f080035;
+        public static int udesk_struct_des=0x7f080033;
+        public static int udesk_struct_img=0x7f08002f;
+        public static int udesk_struct_img_container=0x7f08002e;
+        public static int udesk_struct_text_container=0x7f080031;
+        public static int udesk_struct_title=0x7f080032;
+        public static int udesk_subject=0x7f080018;
+        public static int udesk_survy_bottom=0x7f08005e;
+        public static int udesk_title=0x7f08005a;
+        public static int udesk_titlebar_right=0x7f080067;
+        public static int udesk_transfer_agent=0x7f080066;
+        public static int udesk_tv_msg=0x7f080022;
+        public static int udesk_tv_rich_msg=0x7f080036;
+        public static int udesk_tv_time=0x7f08001b;
+        public static int udesk_webview_root=0x7f08001a;
+        public static int udesk_zoom_imageview=0x7f08006a;
+        public static int udesk_zoom_save=0x7f080069;
+        public static int udesktitlebar=0x7f08000c;
     }
     public static final class layout {
         public static int udesk_activity_base=0x7f030000;
         public static int udesk_activity_im=0x7f030001;
         public static int udesk_articleactivity_view=0x7f030002;
         public static int udesk_base_webview=0x7f030003;
-        public static int udesk_chat_msg_item_audiot_l=0x7f030004;
-        public static int udesk_chat_msg_item_audiot_r=0x7f030005;
-        public static int udesk_chat_msg_item_imgt_l=0x7f030006;
-        public static int udesk_chat_msg_item_imgt_r=0x7f030007;
-        public static int udesk_chat_msg_item_redirect=0x7f030008;
-        public static int udesk_chat_msg_item_txt_l=0x7f030009;
-        public static int udesk_chat_msg_item_txt_r=0x7f03000a;
-        public static int udesk_chat_msg_itemstruct_l=0x7f03000b;
-        public static int udesk_chat_rich_item_txt=0x7f03000c;
-        public static int udesk_confirm_pop_dialog=0x7f03000d;
-        public static int udesk_default_progressbar=0x7f03000e;
-        public static int udesk_dialog=0x7f03000f;
-        public static int udesk_dlg_select_singlechoice=0x7f030010;
-        public static int udesk_expandlayout_xml=0x7f030011;
-        public static int udesk_im_audio_panel=0x7f030012;
-        public static int udesk_im_commodity_item=0x7f030013;
-        public static int udesk_im_emoji_panel=0x7f030014;
-        public static int udesk_im_refactor_bottom_panel=0x7f030015;
-        public static int udesk_layout_emoji_item=0x7f030016;
-        public static int udesk_layout_get_more=0x7f030017;
-        public static int udesk_layout_helper_item=0x7f030018;
-        public static int udesk_layout_optionagentgroup_item=0x7f030019;
-        public static int udesk_line_horizontal=0x7f03001a;
-        public static int udesk_line_vertical=0x7f03001b;
-        public static int udesk_loading_view=0x7f03001c;
-        public static int udesk_multi_horizontal_menu_item=0x7f03001d;
-        public static int udesk_multi_horizontal_popmenu=0x7f03001e;
-        public static int udesk_options_agentgroup_view=0x7f03001f;
-        public static int udesk_survy_view=0x7f030020;
-        public static int udesk_title_bar=0x7f030021;
-        public static int udesk_zoom_imageview=0x7f030022;
+        public static int udesk_chat_event_item=0x7f030004;
+        public static int udesk_chat_leavemsg_item_txt_l=0x7f030005;
+        public static int udesk_chat_leavemsg_item_txt_r=0x7f030006;
+        public static int udesk_chat_msg_item_audiot_l=0x7f030007;
+        public static int udesk_chat_msg_item_audiot_r=0x7f030008;
+        public static int udesk_chat_msg_item_file_l=0x7f030009;
+        public static int udesk_chat_msg_item_file_r=0x7f03000a;
+        public static int udesk_chat_msg_item_imgt_l=0x7f03000b;
+        public static int udesk_chat_msg_item_imgt_r=0x7f03000c;
+        public static int udesk_chat_msg_item_redirect=0x7f03000d;
+        public static int udesk_chat_msg_item_txt_l=0x7f03000e;
+        public static int udesk_chat_msg_item_txt_r=0x7f03000f;
+        public static int udesk_chat_msg_itemstruct_l=0x7f030010;
+        public static int udesk_chat_rich_item_txt=0x7f030011;
+        public static int udesk_confirm_pop_dialog=0x7f030012;
+        public static int udesk_default_progressbar=0x7f030013;
+        public static int udesk_dialog=0x7f030014;
+        public static int udesk_dlg_select_singlechoice=0x7f030015;
+        public static int udesk_expandlayout_xml=0x7f030016;
+        public static int udesk_im_audio_panel=0x7f030017;
+        public static int udesk_im_commodity_item=0x7f030018;
+        public static int udesk_im_emoji_panel=0x7f030019;
+        public static int udesk_im_refactor_bottom_panel=0x7f03001a;
+        public static int udesk_layout_emoji_item=0x7f03001b;
+        public static int udesk_layout_get_more=0x7f03001c;
+        public static int udesk_layout_helper_item=0x7f03001d;
+        public static int udesk_layout_optionagentgroup_item=0x7f03001e;
+        public static int udesk_line_horizontal=0x7f03001f;
+        public static int udesk_line_vertical=0x7f030020;
+        public static int udesk_loading_view=0x7f030021;
+        public static int udesk_multi_horizontal_menu_item=0x7f030022;
+        public static int udesk_multi_horizontal_popmenu=0x7f030023;
+        public static int udesk_options_agentgroup_view=0x7f030024;
+        public static int udesk_survy_view=0x7f030025;
+        public static int udesk_title_bar=0x7f030026;
+        public static int udesk_zoom_imageview=0x7f030027;
     }
     public static final class string {
-        public static int add_bolcked_tips=0x7f060026;
-        public static int aduido_denied=0x7f060023;
-        public static int camera_denied=0x7f060024;
-        public static int photo_denied=0x7f060025;
-        public static int udesk_agent_connecting=0x7f060027;
-        public static int udesk_agent_connecting_error_net_uavailabl=0x7f060029;
-        public static int udesk_agent_inti=0x7f060028;
-        public static int udesk_api_error=0x7f060037;
+        public static int add_bolcked_tips=0x7f060027;
+        public static int aduido_denied=0x7f060024;
+        public static int camera_denied=0x7f060025;
+        public static int file_denied=0x7f060023;
+        public static int photo_denied=0x7f060026;
+        public static int udesk_agent_connecting=0x7f060028;
+        public static int udesk_agent_connecting_error_net_uavailabl=0x7f06002a;
+        public static int udesk_agent_inti=0x7f060029;
+        public static int udesk_api_error=0x7f060038;
         public static int udesk_cancel=0x7f06000f;
+        public static int udesk_close_chart=0x7f060046;
         public static int udesk_copy=0x7f06000c;
-        public static int udesk_edit_hint_msg=0x7f06002a;
+        public static int udesk_customer_leavemsg=0x7f06003a;
+        public static int udesk_download_failure=0x7f060042;
+        public static int udesk_edit_hint_msg=0x7f06002b;
         public static int udesk_fail_save_image=0x7f06000d;
+        public static int udesk_file_to_large=0x7f06003c;
         public static int udesk_get_more_history=0x7f060005;
+        public static int udesk_gps_downfile_tips=0x7f06003e;
+        public static int udesk_gps_tips=0x7f06003d;
+        public static int udesk_has_downed=0x7f060040;
+        public static int udesk_has_download=0x7f060041;
         public static int udesk_has_not_open_robot=0x7f060020;
-        public static int udesk_has_survey=0x7f060032;
+        public static int udesk_has_send=0x7f06003f;
+        public static int udesk_has_survey=0x7f060033;
+        public static int udesk_has_uncomplete_tip=0x7f060043;
         public static int udesk_has_wrong_net=0x7f060021;
         public static int udesk_helper_loadding=0x7f060009;
         public static int udesk_im_record_error=0x7f060019;
@@ -562,11 +840,13 @@ containing a value of this type.
         public static int udesk_navi_helper_input_hint=0x7f06000a;
         public static int udesk_navi_helper_title_main=0x7f060002;
         public static int udesk_navi_open_im=0x7f060001;
+        public static int udesk_no_app_handle=0x7f060044;
         public static int udesk_no_more_history=0x7f060008;
-        public static int udesk_no_sdktoken=0x7f060039;
-        public static int udesk_no_set_survey=0x7f060033;
-        public static int udesk_nonexistent_agent=0x7f060030;
-        public static int udesk_nonexistent_groupId=0x7f060031;
+        public static int udesk_no_sdktoken=0x7f060045;
+        public static int udesk_no_set_survey=0x7f060034;
+        public static int udesk_nonexistent_agent=0x7f060031;
+        public static int udesk_nonexistent_groupId=0x7f060032;
+        public static int udesk_offline_reply_msg=0x7f06003b;
         public static int udesk_ok=0x7f060011;
         public static int udesk_options_agentgroup=0x7f060022;
         public static int udesk_release_to_get_more=0x7f060006;
@@ -574,19 +854,19 @@ containing a value of this type.
         public static int udesk_save=0x7f06000b;
         public static int udesk_send_message=0x7f060003;
         public static int udesk_send_message_empty=0x7f060004;
-        public static int udesk_service=0x7f06002f;
-        public static int udesk_service_line=0x7f060035;
-        public static int udesk_service_offline=0x7f060036;
+        public static int udesk_service=0x7f060030;
+        public static int udesk_service_line=0x7f060036;
+        public static int udesk_service_offline=0x7f060037;
         public static int udesk_success_save_image=0x7f06000e;
         public static int udesk_sure=0x7f060010;
-        public static int udesk_survey_error=0x7f060034;
-        public static int udesk_thanks_survy=0x7f06002d;
+        public static int udesk_survey_error=0x7f060035;
+        public static int udesk_thanks_survy=0x7f06002e;
         public static int udesk_titlebar_back=0x7f060000;
         public static int udesk_transfer_persion=0x7f06001e;
-        public static int udesk_transfer_success=0x7f06002e;
-        public static int udesk_upload_img_error=0x7f060038;
-        public static int udesk_voice_cancle=0x7f06002c;
-        public static int udesk_voice_init=0x7f06002b;
+        public static int udesk_transfer_success=0x7f06002f;
+        public static int udesk_upload_img_error=0x7f060039;
+        public static int udesk_voice_cancle=0x7f06002d;
+        public static int udesk_voice_init=0x7f06002c;
     }
     public static final class style {
         public static int Udesk_Theme=0x7f070003;
@@ -621,7 +901,7 @@ containing a value of this type.
            @see #CircleImageView_civ_fill_color
          */
         public static final int[] CircleImageView = {
-            0x7f01000d, 0x7f01000e, 0x7f01000f, 0x7f010010
+            0x7f010027, 0x7f010028, 0x7f010029, 0x7f01002a
         };
         /**
           <p>This symbol is the offset where the {@link cn.udesk.R.attr#civ_border_color}
@@ -683,6 +963,480 @@ containing a value of this type.
           @attr name cn.udesk:civ_fill_color
         */
         public static int CircleImageView_civ_fill_color = 3;
+        /** Attributes that can be used with a GenericDraweeHierarchy.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_actualImageScaleType cn.udesk:actualImageScaleType}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_backgroundImage cn.udesk:backgroundImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_fadeDuration cn.udesk:fadeDuration}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_failureImage cn.udesk:failureImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_failureImageScaleType cn.udesk:failureImageScaleType}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_overlayImage cn.udesk:overlayImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_placeholderImage cn.udesk:placeholderImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_placeholderImageScaleType cn.udesk:placeholderImageScaleType}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_pressedStateOverlayImage cn.udesk:pressedStateOverlayImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_progressBarAutoRotateInterval cn.udesk:progressBarAutoRotateInterval}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_progressBarImage cn.udesk:progressBarImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_progressBarImageScaleType cn.udesk:progressBarImageScaleType}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_retryImage cn.udesk:retryImage}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_retryImageScaleType cn.udesk:retryImageScaleType}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundAsCircle cn.udesk:roundAsCircle}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundBottomLeft cn.udesk:roundBottomLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundBottomRight cn.udesk:roundBottomRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundTopLeft cn.udesk:roundTopLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundTopRight cn.udesk:roundTopRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundWithOverlayColor cn.udesk:roundWithOverlayColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundedCornerRadius cn.udesk:roundedCornerRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderColor cn.udesk:roundingBorderColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderPadding cn.udesk:roundingBorderPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_roundingBorderWidth cn.udesk:roundingBorderWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #GenericDraweeHierarchy_viewAspectRatio cn.udesk:viewAspectRatio}</code></td><td></td></tr>
+           </table>
+           @see #GenericDraweeHierarchy_actualImageScaleType
+           @see #GenericDraweeHierarchy_backgroundImage
+           @see #GenericDraweeHierarchy_fadeDuration
+           @see #GenericDraweeHierarchy_failureImage
+           @see #GenericDraweeHierarchy_failureImageScaleType
+           @see #GenericDraweeHierarchy_overlayImage
+           @see #GenericDraweeHierarchy_placeholderImage
+           @see #GenericDraweeHierarchy_placeholderImageScaleType
+           @see #GenericDraweeHierarchy_pressedStateOverlayImage
+           @see #GenericDraweeHierarchy_progressBarAutoRotateInterval
+           @see #GenericDraweeHierarchy_progressBarImage
+           @see #GenericDraweeHierarchy_progressBarImageScaleType
+           @see #GenericDraweeHierarchy_retryImage
+           @see #GenericDraweeHierarchy_retryImageScaleType
+           @see #GenericDraweeHierarchy_roundAsCircle
+           @see #GenericDraweeHierarchy_roundBottomLeft
+           @see #GenericDraweeHierarchy_roundBottomRight
+           @see #GenericDraweeHierarchy_roundTopLeft
+           @see #GenericDraweeHierarchy_roundTopRight
+           @see #GenericDraweeHierarchy_roundWithOverlayColor
+           @see #GenericDraweeHierarchy_roundedCornerRadius
+           @see #GenericDraweeHierarchy_roundingBorderColor
+           @see #GenericDraweeHierarchy_roundingBorderPadding
+           @see #GenericDraweeHierarchy_roundingBorderWidth
+           @see #GenericDraweeHierarchy_viewAspectRatio
+         */
+        public static final int[] GenericDraweeHierarchy = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f,
+            0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013,
+            0x7f010014, 0x7f010015, 0x7f010016, 0x7f010017,
+            0x7f010018
+        };
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#actualImageScaleType}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+          @attr name cn.udesk:actualImageScaleType
+        */
+        public static int GenericDraweeHierarchy_actualImageScaleType = 11;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#backgroundImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:backgroundImage
+        */
+        public static int GenericDraweeHierarchy_backgroundImage = 12;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#fadeDuration}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:fadeDuration
+        */
+        public static int GenericDraweeHierarchy_fadeDuration = 0;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#failureImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:failureImage
+        */
+        public static int GenericDraweeHierarchy_failureImage = 6;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#failureImageScaleType}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+          @attr name cn.udesk:failureImageScaleType
+        */
+        public static int GenericDraweeHierarchy_failureImageScaleType = 7;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#overlayImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:overlayImage
+        */
+        public static int GenericDraweeHierarchy_overlayImage = 13;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#placeholderImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:placeholderImage
+        */
+        public static int GenericDraweeHierarchy_placeholderImage = 2;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#placeholderImageScaleType}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+          @attr name cn.udesk:placeholderImageScaleType
+        */
+        public static int GenericDraweeHierarchy_placeholderImageScaleType = 3;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#pressedStateOverlayImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:pressedStateOverlayImage
+        */
+        public static int GenericDraweeHierarchy_pressedStateOverlayImage = 14;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#progressBarAutoRotateInterval}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:progressBarAutoRotateInterval
+        */
+        public static int GenericDraweeHierarchy_progressBarAutoRotateInterval = 10;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#progressBarImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:progressBarImage
+        */
+        public static int GenericDraweeHierarchy_progressBarImage = 8;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#progressBarImageScaleType}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+          @attr name cn.udesk:progressBarImageScaleType
+        */
+        public static int GenericDraweeHierarchy_progressBarImageScaleType = 9;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#retryImage}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name cn.udesk:retryImage
+        */
+        public static int GenericDraweeHierarchy_retryImage = 4;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#retryImageScaleType}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>-1</td><td></td></tr>
+<tr><td><code>fitXY</code></td><td>0</td><td></td></tr>
+<tr><td><code>fitStart</code></td><td>1</td><td></td></tr>
+<tr><td><code>fitCenter</code></td><td>2</td><td></td></tr>
+<tr><td><code>fitEnd</code></td><td>3</td><td></td></tr>
+<tr><td><code>center</code></td><td>4</td><td></td></tr>
+<tr><td><code>centerInside</code></td><td>5</td><td></td></tr>
+<tr><td><code>centerCrop</code></td><td>6</td><td></td></tr>
+<tr><td><code>focusCrop</code></td><td>7</td><td></td></tr>
+</table>
+          @attr name cn.udesk:retryImageScaleType
+        */
+        public static int GenericDraweeHierarchy_retryImageScaleType = 5;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundAsCircle}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundAsCircle
+        */
+        public static int GenericDraweeHierarchy_roundAsCircle = 15;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundBottomLeft}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundBottomLeft
+        */
+        public static int GenericDraweeHierarchy_roundBottomLeft = 20;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundBottomRight}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundBottomRight
+        */
+        public static int GenericDraweeHierarchy_roundBottomRight = 19;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundTopLeft}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundTopLeft
+        */
+        public static int GenericDraweeHierarchy_roundTopLeft = 17;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundTopRight}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundTopRight
+        */
+        public static int GenericDraweeHierarchy_roundTopRight = 18;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundWithOverlayColor}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundWithOverlayColor
+        */
+        public static int GenericDraweeHierarchy_roundWithOverlayColor = 21;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundedCornerRadius}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundedCornerRadius
+        */
+        public static int GenericDraweeHierarchy_roundedCornerRadius = 16;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundingBorderColor}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundingBorderColor
+        */
+        public static int GenericDraweeHierarchy_roundingBorderColor = 23;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundingBorderPadding}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundingBorderPadding
+        */
+        public static int GenericDraweeHierarchy_roundingBorderPadding = 24;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#roundingBorderWidth}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:roundingBorderWidth
+        */
+        public static int GenericDraweeHierarchy_roundingBorderWidth = 22;
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#viewAspectRatio}
+          attribute's value can be found in the {@link #GenericDraweeHierarchy} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:viewAspectRatio
+        */
+        public static int GenericDraweeHierarchy_viewAspectRatio = 1;
+        /** Attributes that can be used with a SimpleDraweeView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SimpleDraweeView_actualImageUri cn.udesk:actualImageUri}</code></td><td></td></tr>
+           </table>
+           @see #SimpleDraweeView_actualImageUri
+         */
+        public static final int[] SimpleDraweeView = {
+            0x7f010019
+        };
+        /**
+          <p>This symbol is the offset where the {@link cn.udesk.R.attr#actualImageUri}
+          attribute's value can be found in the {@link #SimpleDraweeView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name cn.udesk:actualImageUri
+        */
+        public static int SimpleDraweeView_actualImageUri = 0;
         /** <declare-styleable name="UdeskTitleBar">
 <attr name="titleBarTitle" format="string"/>
 <attr name="titleBarRightText" format="string"/>
@@ -712,8 +1466,8 @@ containing a value of this type.
            @see #UdeskChatImageView_udesk_radius
          */
         public static final int[] UdeskChatImageView = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006
+            0x7f01001a, 0x7f01001b, 0x7f01001c, 0x7f01001d,
+            0x7f01001e, 0x7f01001f, 0x7f010020
         };
         /**
           <p>This symbol is the offset where the {@link cn.udesk.R.attr#udesk_arrow_height}
@@ -843,8 +1597,8 @@ containing a value of this type.
            @see #UdeskVoiceView_udeskvoiceTextSize
          */
         public static final int[] UdeskVoiceView = {
-            0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a,
-            0x7f01000b, 0x7f01000c
+            0x7f010021, 0x7f010022, 0x7f010023, 0x7f010024,
+            0x7f010025, 0x7f010026
         };
         /**
           <p>This symbol is the offset where the {@link cn.udesk.R.attr#udeskvoiceLineColor}

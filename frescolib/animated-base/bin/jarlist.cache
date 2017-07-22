@@ -1,0 +1,10 @@
+# cache for current jar dependency. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1469167888000 110747 e9b63380f3a242dbdbf103a2355ad7e43bad17cb D:\gitproject\udesk_sdk_android_eclipse\frescolib\imagepipeline-base\libs\library-2.4.0.jar
+1469167872000 110747 e9b63380f3a242dbdbf103a2355ad7e43bad17cb D:\gitproject\udesk_sdk_android_eclipse\frescolib\animated-base\libs\library-2.4.0.jar
+1469167888000 38092 d85884acf6810a3bbbecb587f239005cbc846dc4 D:\gitproject\udesk_sdk_android_eclipse\frescolib\imagepipeline\libs\bolts-tasks-1.4.0.jar
+1469167888000 38092 d85884acf6810a3bbbecb587f239005cbc846dc4 D:\gitproject\udesk_sdk_android_eclipse\frescolib\imagepipeline-base\libs\bolts-tasks-1.4.0.jar
+1469167872000 38092 d85884acf6810a3bbbecb587f239005cbc846dc4 D:\gitproject\udesk_sdk_android_eclipse\frescolib\animated-base\libs\bolts-tasks-1.4.0.jar
+1469168052000 1071769 3be474b1b21b31cf2fa93fe6bd641ae108d96452 D:\gitproject\udesk_sdk_android_eclipse\frescolib\imagepipeline-base\libs\android-support-v4.jar
+1469168052000 1071769 3be474b1b21b31cf2fa93fe6bd641ae108d96452 D:\gitproject\udesk_sdk_android_eclipse\frescolib\animated-base\libs\android-support-v4.jar
