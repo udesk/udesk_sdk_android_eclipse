@@ -204,7 +204,6 @@ public class ChatActivityPresenter {
             if (result.equals("failure")) {
                 mChatView.showFailToast(string);
             } else if (result.equals("succes")) {
-               
                 if (isJsonStr) {
                     JsonUtils.parserCustomersJson(string);
                     updateUserInfo(UdeskBaseInfo.customerId);
@@ -250,8 +249,10 @@ public class ChatActivityPresenter {
 
                         @Override
                         public void onSuccess(String message) {
+
                         	 //创建用户成功连接xmpp服务器
                         	UdeskMessageManager.getInstance().connection();
+
                             AgentInfo agentInfo = JsonUtils.parseAgentResult(message);
                             if (agentInfo.getAgentCode() == 2000) {
                                 getIMStatus(agentInfo);
