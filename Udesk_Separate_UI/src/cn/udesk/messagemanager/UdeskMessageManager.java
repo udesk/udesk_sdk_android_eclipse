@@ -49,6 +49,13 @@ public class UdeskMessageManager {
                     .newSingleThreadExecutor("messageExecutor");
         }
     }
+    
+    public boolean isConnection(){
+        if (mUdeskXmppManager != null){
+            return  mUdeskXmppManager.isConnection();
+        }
+        return  false;
+    }
 
     public void connection() {
         try {

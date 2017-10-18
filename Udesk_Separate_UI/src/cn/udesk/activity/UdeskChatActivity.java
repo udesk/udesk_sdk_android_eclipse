@@ -87,7 +87,7 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 	private HorVoiceView mHorVoiceView;
 	private TextView udesk_audio_tips;
 	private View emojisPannel;
-	private View btnPhoto, btnCamera, btnsurvy, btnFile;
+	private View btnPhoto, btnCamera, btnsurvy, btnFile,btnLoaction;
 	private View showVoiceImg;
 	private View audioPanel;
 	private View audioCancle;
@@ -130,7 +130,8 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 	private final int SELECT_IMAGE_ACTIVITY_REQUEST_CODE = 102;
 	private final int SELECT_SURVY_OPTION_REQUEST_CODE = 103;
 	private final int SELECT_FILE_OPTION_REQUEST_CODE = 104;
-
+    private final int SELECT_LOCATION_OPTION_REQUEST_CODE = 105;
+    
 	private MyHandler mHandler;
 	private ChatActivityPresenter mPresenter;
 	private BroadcastReceiver mConnectivityChangedReceiver = null;
@@ -549,16 +550,40 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 			emjoGridView.setOnItemClickListener(this);
 			btnCamera = findViewById(R.id.udesk_bottom_option_camera);
 			btnCamera.setOnClickListener(this);
+			  if (UdeskConfig.isUsecamera) {
+	                btnCamera.setVisibility(View.VISIBLE);
+	            } else {
+	                btnCamera.setVisibility(View.GONE);
+	            }
 			btnPhoto = findViewById(R.id.udesk_bottom_option_photo);
 			btnPhoto.setOnClickListener(this);
+		       if (UdeskConfig.isUsephoto) {
+	                btnPhoto.setVisibility(View.VISIBLE);
+	            } else {
+	                btnPhoto.setVisibility(View.GONE);
+	            }
 			btnFile = findViewById(R.id.udesk_bottom_option_file);
 			btnFile.setOnClickListener(this);
+		       if (UdeskConfig.isUsefile) {
+	                btnFile.setVisibility(View.VISIBLE);
+	            } else {
+	                btnFile.setVisibility(View.GONE);
+	            }
 			btnsurvy = findViewById(R.id.udesk_bottom_survy_rl);
 			btnsurvy.setOnClickListener(this);
 			if (UdeskSDKManager.getInstance().getImSetting() != null
 					&& !UdeskSDKManager.getInstance().getImSetting().getEnable_im_survey()) {
 				btnsurvy.setVisibility(View.GONE);
 			}
+			
+			  btnLoaction = findViewById(R.id.udesk_bottom_location_rl);
+	            btnLoaction.setOnClickListener(this);
+	            if (UdeskConfig.isUseMap) {
+	                btnLoaction.setVisibility(View.VISIBLE);
+	            } else {
+	                btnLoaction.setVisibility(View.GONE);
+	            }
+			
 			mListView = (UDPullGetMoreListView) findViewById(R.id.udesk_conversation);
 			expandableLayout = (UdeskExpandableLayout) findViewById(R.id.udesk_change_status_info);
 
@@ -569,6 +594,7 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 			} else {
 				showVoiceImg.setVisibility(View.GONE);
 			}
+			
 			audioPanel = findViewById(R.id.udesk_bottom_audios);
 			mHorVoiceView = (HorVoiceView) findViewById(R.id.udesk_horvoiceview);
 			udesk_audio_tips = (TextView) findViewById(R.id.udesk_audio_tips);
@@ -724,7 +750,13 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 				selectFile();
 				bottomoPannelBegginStatus();
 
-			}
+			}else if (R.id.udesk_bottom_location_rl == v.getId()) {
+                if (UdeskSDKManager.getInstance().getCls() != null) {
+                    Intent intent = new Intent(UdeskChatActivity.this, UdeskSDKManager.getInstance().getCls());
+                    startActivityForResult(intent, SELECT_LOCATION_OPTION_REQUEST_CODE);
+                }
+
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 		} catch (OutOfMemoryError error) {
@@ -854,7 +886,20 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 						error.printStackTrace();
 					}
 				}
-			}
+			}else if (SELECT_LOCATION_OPTION_REQUEST_CODE == requestCode) {
+                if (resultCode != Activity.RESULT_OK || data == null) {
+                    return;
+                }
+
+                String postionValue = data.getStringExtra(UdeskConfig.UdeskMapIntentName.Position);
+                String bitmapDir = data.getStringExtra(UdeskConfig.UdeskMapIntentName.BitmapDIR);
+                double latitude = data.getDoubleExtra(UdeskConfig.UdeskMapIntentName.Latitude, 0.0);
+                double longitude = data.getDoubleExtra(UdeskConfig.UdeskMapIntentName.Longitude, 0.0);
+
+                mPresenter.sendLocationMessage(latitude,longitude,postionValue,bitmapDir);
+
+
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 		} catch (OutOfMemoryError e) {
@@ -1073,7 +1118,7 @@ public class UdeskChatActivity extends Activity implements IChatActivityView, On
 		@Override
 		public void run() {
 			if (mPresenter != null) {
-				mPresenter.getAgentInfo();
+				mPresenter.getAgentInfo(true);
 			}
 		}
 	};

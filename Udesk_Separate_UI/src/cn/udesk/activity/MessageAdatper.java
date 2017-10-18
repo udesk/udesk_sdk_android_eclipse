@@ -64,7 +64,8 @@ public class MessageAdatper extends BaseAdapter {
             R.layout.udesk_chat_leavemsg_item_txt_r, // 显示收到留言消息的回复
             R.layout.udesk_chat_event_item, // 显示收到留言消息的回复
             R.layout.udesk_chat_msg_item_file_l,// 文件消息左
-            R.layout.udesk_chat_msg_item_file_r //文件消息右
+            R.layout.udesk_chat_msg_item_file_r ,//文件消息右
+            R.layout.udesk_chat_msg_item_location_r //地理位置消息右
     };
 
     /**
@@ -119,7 +120,7 @@ public class MessageAdatper extends BaseAdapter {
     private static final int Udesk_Event = 12;
     private static final int MSG_FILE_L = 13;
     private static final int MSG_FILE_R = 14;
-
+    private static final int MSG_LOCATION_R = 15;
 
     //2条消息之间 时间间隔超过SPACE_TIME， 会话界面会显示出消息的收发时间
     private static final long SPACE_TIME = 3 * 60 * 1000;
@@ -195,6 +196,8 @@ public class MessageAdatper extends BaseAdapter {
                     }
                 case UdeskConst.ChatMsgTypeInt.TYPE_EVENT:
                     return Udesk_Event;
+                case UdeskConst.ChatMsgTypeInt.TYPE_LOCATION:
+                    return MSG_LOCATION_R;
                 default:
                     return ILLEGAL;
             }
@@ -428,6 +431,13 @@ public class MessageAdatper extends BaseAdapter {
                         eventViewHolder.events = (TextView) convertView.findViewById(R.id.udesk_event);
                         convertView.setTag(eventViewHolder);
                         break;
+                    case MSG_LOCATION_R:
+                        MapViewHolder mapViewHolder = new MapViewHolder();
+                        initItemNormalView(convertView, mapViewHolder);
+                        mapViewHolder.locationValue = (TextView) convertView.findViewById(R.id.postion_value);
+                        mapViewHolder.cropBitMap = (SimpleDraweeView) convertView.findViewById(R.id.udesk_location_image);
+                        convertView.setTag(mapViewHolder);
+                        break;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -473,6 +483,7 @@ public class MessageAdatper extends BaseAdapter {
                     case MSG_IMG_R:
                     case LEAVEMSG_TXT_R:
                     case MSG_FILE_R:
+                    case MSG_LOCATION_R:
                         this.isLeft = false;
                         if (!TextUtils.isEmpty(UdeskBaseInfo.customerUrl)) {
                             UdeskUtil.loadHeadView(mContext,ivHeader, Uri.parse(UdeskBaseInfo.customerUrl));
@@ -1133,6 +1144,46 @@ public class MessageAdatper extends BaseAdapter {
         }
     }
 
+    
+    public class MapViewHolder extends BaseViewHolder {
+        private TextView locationValue;
+        public SimpleDraweeView cropBitMap;
+
+        @Override
+        void bind(Context context) {
+
+            try {
+                final String[] locationMessage = message.getMsgContent().split(";");
+                locationValue.setText(locationMessage[locationMessage.length - 1]);
+                cropBitMap.setImageURI(Uri.fromFile(new File(message.getLocalPath())));
+                cropBitMap.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (UdeskSDKManager.getInstance().getLocationMessageClickCallBack() != null) {
+                            UdeskSDKManager.getInstance().getLocationMessageClickCallBack().luanchMap(mContext, Double.valueOf(locationMessage[0]),
+                                    Double.valueOf(locationMessage[1]), locationMessage[locationMessage.length - 1]);
+                        }
+                    }
+                });
+                /**
+                 * 设置重发按钮的点击事件
+                 */
+                ivStatus.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ((UdeskChatActivity) mContext).retrySendMsg(message);
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    
     private void showStructImg(Context context, StructModel structModel, View structImgView, SimpleDraweeView structImg) {
         try {
             final String imgUrl = structModel.getImg_url();

@@ -51,15 +51,50 @@ public class UdeskSDKManager {
     private IUdeskFormCallBack formCallBack;
 
     private IUdeskStructMessageCallBack structMessageCallBack;
+    
+    private ILocationMessageClickCallBack locationMessageClickCallBack;
+
 
     //多应用 配置选项mode
     private SDKIMSetting imSetting;
+    
+  //缓存设置的指定组，每次进入都必须重新指定
+    private String groupId = "";
+    
+    //传入打开的地图的activity
+    //由于不知道客户使用什么地图，故采用回调的方式，有客户实现发送位置的页面 并传入
+    private Class<?> cls;
 
     private UdeskSDKManager() {
     }
 
     public static UdeskSDKManager getInstance() {
         return instance;
+    }
+    
+    public Class<?> getCls() {
+        return cls;
+    }
+
+    public void setCls(Class<?> cls) {
+        this.cls = cls;
+    }
+
+
+    public interface ILocationMessageClickCallBack {
+        void luanchMap(Context context,double latitude,double longitude,String selctLoactionValue);
+    }
+
+    public ILocationMessageClickCallBack getLocationMessageClickCallBack() {
+        return locationMessageClickCallBack;
+    }
+
+    public void setLocationMessageClickCallBack(ILocationMessageClickCallBack locationMessageClickCallBack) {
+        this.locationMessageClickCallBack = locationMessageClickCallBack;
+    }
+    
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     /**
@@ -244,8 +279,12 @@ public class UdeskSDKManager {
      */
     public void toLanuchChatAcitvity(Context context) {
         Intent intent = new Intent(context, UdeskChatActivity.class);
+        if (TextUtils.isEmpty(groupId)) {
+            intent.putExtra(UdeskConst.UDESKGROUPID, groupId);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+        groupId = "";
     }
 
     /**

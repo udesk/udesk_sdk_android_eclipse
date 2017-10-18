@@ -220,7 +220,7 @@ public class UdeskFuncationExampleActivity extends Activity {
         UdeskCommodityItem item = new UdeskCommodityItem();
         item.setTitle("title");
         item.setSubTitle("99.00");
-        item.setThumbHttpUrl("https://img.alicdn.com/imgextra/i1/1728293990/TB2ngm0qFXXXXcOXXXXXXXXXXXX_!!1728293990.jpg_430x430q90.jpg");
+        item.setThumbHttpUrl("http://api.caissa.com.cn/visa/static/images/newFlag/12232.jpg");
         item.setCommodityUrl("https://detail.tmall.com/item.htm?spm=a1z10.3746-b.w4946-14396547293.1.4PUcgZ&id=529634221064&sku_properties=-1:-1");
         UdeskSDKManager.getInstance().setCommodity(item);
         UdeskSDKManager.getInstance().toLanuchChatAcitvity(UdeskFuncationExampleActivity.this);

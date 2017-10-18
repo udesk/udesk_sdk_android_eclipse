@@ -101,6 +101,7 @@ public class ChatActivityPresenter {
     }
 
     public void unBind() {
+    	 mChatView = null;
         UdeskMessageManager.getInstance().eventui_OnNewPresence.unBind(this);
         UdeskMessageManager.getInstance().eventui_OnMessageReceived.unBind(this);
         UdeskMessageManager.getInstance().eventui_OnNewMessage.unBind(this);
@@ -208,7 +209,7 @@ public class ChatActivityPresenter {
                     JsonUtils.parserCustomersJson(string);
                     updateUserInfo(UdeskBaseInfo.customerId);
                 }
-                getAgentInfo();
+                getAgentInfo(false);
                 //拉取工单回复的消息
                 getTicketReplies(UdeskBaseInfo.customerId, 1, UdeskConst.UDESK_HISTORY_COUNT, "");
             }
@@ -237,7 +238,7 @@ public class ChatActivityPresenter {
     }
 
     //请求分配客服信息
-    public void getAgentInfo() {
+    public void getAgentInfo(final boolean isWait) {
         try {
             UdeskHttpFacade.getInstance().getAgentInfo(
                     UdeskSDKManager.getInstance().getDomain(mChatView.getContext()),
@@ -251,7 +252,13 @@ public class ChatActivityPresenter {
                         public void onSuccess(String message) {
 
                         	 //创建用户成功连接xmpp服务器
-                        	UdeskMessageManager.getInstance().connection();
+                            if (!UdeskMessageManager.getInstance().isConnection()) {
+                                UdeskMessageManager.getInstance().connection();
+                            } else {
+                                if (!isWait) {
+                                    UdeskMessageManager.getInstance().connection();
+                                }
+                            }
 
                             AgentInfo agentInfo = JsonUtils.parseAgentResult(message);
                             if (agentInfo.getAgentCode() == 2000) {
@@ -722,6 +729,28 @@ public class ChatActivityPresenter {
             e.printStackTrace();
         }
     }
+    
+    
+    public void sendLocationMessage(double lat,double longitude,String localvalue,String bitmapDir){
+        StringBuilder builder = new StringBuilder();
+        builder.append(lat).append(";").append(longitude).append(";").append("16;").append(localvalue);
+        try {
+            MessageInfo msg = buildSendMessage(
+                    UdeskConst.ChatMsgTypeString.TYPE_Location,
+                    System.currentTimeMillis(), builder.toString(), bitmapDir);
+            saveMessage(msg);
+            mChatView.addMessage(msg);
+            UdeskMessageManager.getInstance().sendMessage(msg.getMsgtype(),
+                    msg.getMsgContent(), msg.getMsgId(),
+                    mChatView.getAgentInfo().getAgentJid(), msg.getDuration(), mChatView.getAgentInfo().getIm_sub_session_id());
+            UdeskDBManager.getInstance().addSendingMsg(msg.getMsgId(),
+                    UdeskConst.SendFlag.RESULT_SEND, System.currentTimeMillis());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    
 
     // 发送录音信息
     public void sendRecordAudioMsg(String audiopath, long duration) {
@@ -1230,7 +1259,7 @@ public class ChatActivityPresenter {
         @Override
         public void run() {
             try {
-                if (mChatView.getHandler() != null) {
+                if (mChatView != null && mChatView.getHandler() != null) {
                     updateSendFailedFlag();
                     retrySendMsg();
                     mChatView.getHandler().postDelayed(this, 5000);
@@ -1281,7 +1310,7 @@ public class ChatActivityPresenter {
     //点击失败按钮 重试发送消息
     public void startRetryMsg(MessageInfo message) {
         try {
-            if (message.getMsgtype().equals(UdeskConst.ChatMsgTypeString.TYPE_TEXT)) {
+            if (message.getMsgtype().equals(UdeskConst.ChatMsgTypeString.TYPE_TEXT) || message.getMsgtype().equals(UdeskConst.ChatMsgTypeString.TYPE_Location)) {
                 UdeskMessageManager.getInstance().sendMessage(message.getMsgtype(),
                         message.getMsgContent(), message.getMsgId(),
                         mChatView.getAgentInfo().getAgentJid(), message.getDuration(), mChatView.getAgentInfo().getIm_sub_session_id());

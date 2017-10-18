@@ -58,6 +58,21 @@ public class UdeskConfig {
 
     //是否使用录音功能  true表示使用 false表示不使用
     public  static  boolean  isUseVoice = true;
+    
+
+    //是否使用发送图片的功能  true表示使用 false表示不使用
+    public static boolean isUsephoto = true;
+
+    //是否使用拍照的功能  true表示使用 false表示不使用
+    public static boolean isUsecamera = true;
+
+    //是否使用上传MP4视频功能  true表示使用 false表示不使用
+    public static boolean isUsefile = true;
+
+    //是否使用发送位置功能  true表示使用 false表示不使用
+    public static boolean isUseMap = false;
+    
+    public static String useMapType = UdeskMapType.Other;
 
     //mode: mark (默认,标记放弃)/ cannel_mark(取消标记) / force_quit(强制立即放弃)
     public static  class  UdeskQuenuFlag{
@@ -69,5 +84,33 @@ public class UdeskConfig {
     public static class UdeskPushFlag{
         public static final String ON ="on";
         public static final String OFF ="off";
+    }
+    
+    public static class UdeskMapIntentName {
+        //选中的位置
+        public static final String Position = "udesk_position";
+
+        //选中位置周边位置的截图存储的本地路径
+        public static final String BitmapDIR = "udesk_bitmap_dir";
+
+        //选中位置的纬度
+        public static final String Latitude = "udesk_latitude";
+
+        //选中位置的经度
+        public static final String Longitude = "udesk_longitude";
+    }
+    
+    public static class UdeskMapType {
+        //百度地图
+        public static final String BaiDu = "baidu";
+        //腾讯地图
+        public static final String Tencent = "tencent ";
+
+        //高德底图
+        public static final String GaoDe = "amap ";
+
+        //其它地图
+        public static final String Other = "other ";
+
     }
 }
